@@ -1,0 +1,47 @@
+@import "account";
+@import "account-create";
+@import "bitkapital";
+@import "blocktrades";
+@import "cards";
+@import "console";
+@import "dashboard";
+@import "exchange";
+@import "existing_accounts";
+@import "footer";
+@import "forms";
+@import "header";
+@import "help";
+@import "loading-indicator";
+@import "modal";
+@import "pagination";
+@import "rudex";
+@import "settings";
+@import "tables";
+@import "tabs";
+@import "typeahead";
+@import "page404";
+@import "wallet";
+@import "incognito";
+@import "asset";
+@import "community";
+@import "registration/account-registration";
+@import "registration/registration-selector";
+@import "login/login";
+
+.lifetime {
+    background: url("../fresh-bolt2.png") no-repeat 100% 50%;
+    background-size: auto 80%;
+    padding-right: 0.75rem;
+}
+
+.bottom-border {
+    border-bottom: 1px solid #444;
+}
+
+.linethrough {
+    text-decoration: line-through;
+}
+
+.fixed-height-2rem tr {
+    height: 2.5rem;
+}

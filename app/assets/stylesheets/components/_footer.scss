@@ -1,0 +1,78 @@
+.node-access-popup {
+    @include RobotoRegular;
+
+    right: 55px;
+    bottom: 35px;
+    width: 250px;
+    overflow-y: auto;
+    position: absolute;
+    padding: 10px;
+    .nodes-list .api-status {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        a {
+            float: right;
+            position: relative;
+            top: 2px;
+            right: 10px;
+        }
+    }
+}
+
+.footer {
+    @include RobotoRegular;
+    text-transform: lowercase;
+    font-variant: small-caps;
+    div.footer-status {
+        position: absolute;
+        right: 0;
+        > span {
+            position: relative;
+            top: -9px;
+        }
+    }
+    div.footer-block {
+        position: relative;
+        bottom: 0;
+        > span {
+            position: relative;
+            top: 7px;
+            font-size: 0.95rem;
+            > .footer-block-title {
+                font-size: 0.85rem;
+            }
+        }
+    }
+    background-color: #777;
+    opacity: 0.7;
+    height: 36px;
+    line-height: 36px;
+    vertical-align: middle;
+    color: #fff;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+    a {
+        text-decoration: underline;
+    }
+
+    .logo {
+        padding-right: 0.5rem;
+        border-right: 1px solid $border-color;
+        line-height: 2rem;
+        .version {
+            font-size: 75%;
+            vertical-align: baseline;
+        }
+    }
+
+    > div > div:last-of-type {
+        padding-left: 1rem;
+        border-left: 1px solid $border-color;
+        overflow: hidden;
+    }
+}
+
+.logo svg {
+    width: 1.75rem !important;
+    height: 1.75rem !important;
+}

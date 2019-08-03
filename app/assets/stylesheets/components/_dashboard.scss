@@ -1,0 +1,65 @@
+.balance-row.active {
+    background-color: #3c3c3c;
+}
+
+.balance-row:hover {
+    background-color: #3c3c3c;
+}
+
+.balance-row {
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 10px 20px;
+}
+
+.balance-row:hover {
+    cursor: pointer;
+}
+
+.SimpleTrade__help-text {
+    font-style: italic;
+    padding-top: 5px;
+    font-size: 95%;
+}
+
+div.button.create-account {
+    font-size: 1.2rem;
+}
+
+div.input-wrapper {
+    > div.input-right-symbol {
+        font-size: 0.9rem;
+        @include RobotoMedium;
+        position: absolute;
+        top: 12px;
+        right: 8px;
+    }
+}
+
+.SimpleDepositBridge__info-row {
+    > div {
+        padding-bottom: 5px;
+        > div.float-right {
+            clear: both;
+            @include RobotoMedium;
+        }
+    }
+}
+
+// QR canvas
+.QR {
+    padding: 1rem;
+    > canvas {
+        background: white;
+        padding: 0.5rem;
+    }
+}
+
+.copyIcon {
+    padding: 0.4rem;
+    margin-right: 1rem;
+    vertical-align: middle;
+    > button.copyIcon {
+        height: inherit;
+    }
+}
