@@ -195,10 +195,10 @@ class AccountOverview extends React.Component {
                     <Translate content="header.payments" />
                 </th>
                 <th>
-                    <Translate content="modal.deposit.submit" />
+                    <Translate content="icons.deposit.deposit" />
                 </th>
                 <th>
-                    <Translate content="modal.withdraw.submit" />
+                    <Translate content="icons.withdraw" />
                 </th>
                 <th className="column-hide-small hide">
                     <Translate content="account.trade" />
@@ -476,7 +476,7 @@ class AccountOverview extends React.Component {
                               tabsClass="account-overview no-padding bordered-header content-block"
                           >
                               <Tab
-                                  title={"Balances"}
+                                  title={"transfer.balances"}
                                   subText={portfolioActiveAssetsBalance}
                               >
                                   <div className="header-selector">

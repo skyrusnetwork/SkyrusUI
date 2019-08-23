@@ -45,7 +45,7 @@ export default class SettingsEntry extends React.Component {
             value,
             input,
             selected = settings.get(setting);
-        let noHeader = false;
+        let noHeader = this.props.hideTitle == true ? true : false;
         let component = null;
 
         switch (setting) {
@@ -211,7 +211,7 @@ export default class SettingsEntry extends React.Component {
         }
 
         return (
-            <section className="block-list no-border-bottom">
+            <section className="block-list no-border-bottom" style={{fontWeight: 'bold'}}>
                 {noHeader ? null : (
                     <header>
                         <Translate
@@ -230,6 +230,7 @@ export default class SettingsEntry extends React.Component {
                         <li className="with-dropdown">
                             {optional}
                             <select
+                                style={{fontSize: 19}}
                                 value={value}
                                 className="settings-select"
                                 onChange={this.props.onChange.bind(

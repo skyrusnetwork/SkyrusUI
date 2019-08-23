@@ -6,6 +6,7 @@ import fire from "../firebase";
 import FileUploader from "react-firebase-file-uploader";
 import {Select, Row, Col, Button, Modal} from "bitshares-ui-style-guide";
 import Popup from "reactjs-popup";
+import counterpart from "counterpart";
 const database = fire.database();
 const storage = fire.storage();
 import {Notification} from "bitshares-ui-style-guide";
@@ -508,7 +509,7 @@ class Profile extends React.Component {
       return (
         <span className = "ant-btn" style={{width: 120, borderRadius: 5, color: '#FFFFFF', borderColor: '#2d2e37', backgroundColor: '#2d2e37', display: 'flex', alignItems: 'center'}}>
           <span style={{marginRight: 10}}>
-            GROUP
+            {counterpart.translate("community.group")}
           </span>
           <Icon
               size="1x"
@@ -527,12 +528,12 @@ class Profile extends React.Component {
         closeOnDocumentClick
         mouseLeaveDelay={100}
         mouseEnterDelay={0}
-        contentStyle={{ height: 200, width: 120, padding: '10px', border: 'none', backgroundColor: "#2d2e37", borderRadius: 3}}
+        contentStyle={{ height: 200, width: 220, padding: '10px', border: 'none', backgroundColor: "#2d2e37", borderRadius: 3}}
         arrow={false}
         trigger={
           <span className = "ant-btn" style={{width: 120, borderRadius: 5, color: '#FFFFFF', borderColor: '#2d2e37', backgroundColor: '#2d2e37', display: 'flex', alignItems: 'center'}}>
             <span style={{marginRight: 10}}>
-              GROUP
+              {counterpart.translate("community.group")}
             </span>
             <Icon
                 size="1x"
@@ -557,7 +558,7 @@ class Profile extends React.Component {
       let group = this.state.groups[key];
       group.key = key;
       groupViews.push(
-        <div key={key} style={{cursor: 'pointer', marginVertical: 3}} onClick={() => {this.setState({selectedGroup : group, groupEditName: group.name, groupEditDescription: group.description})}}>
+        <div style={{marginBottom:"10px", cursor: "pointer"}} key={key} className="three-dot" onClick={() => {this.setState({selectedGroup : group, groupEditName: group.name, groupEditDescription: group.description})}}>
           {group.name}
         </div>
       );
@@ -577,7 +578,7 @@ class Profile extends React.Component {
       return (
         <span className = "ant-btn" style={{width: 120, borderRadius: 5, color: '#FFFFFF', borderColor: '#2d2e37', backgroundColor: '#2d2e37', display: 'flex', alignItems: 'center'}}>
           <span style={{marginRight: 10}}>
-            Contact
+            {counterpart.translate("community.contact")}
           </span>
           <Icon
               size="1x"
@@ -600,7 +601,7 @@ class Profile extends React.Component {
       return (
         <span className = "ant-btn" style={{width: 120, borderRadius: 5, color: '#FFFFFF', borderColor: '#2d2e37', backgroundColor: '#2d2e37', display: 'flex', alignItems: 'center'}}>
           <span style={{marginRight: 10}}>
-            Contact
+            {counterpart.translate("community.contact")}
           </span>
           <Icon
               size="1x"
@@ -619,12 +620,12 @@ class Profile extends React.Component {
         closeOnDocumentClick
         mouseLeaveDelay={100}
         mouseEnterDelay={0}
-        contentStyle={{ width: 120, padding: '10px', border: 'none', backgroundColor: "#2d2e37", borderRadius: 3, height: 200}}
+        contentStyle={{ width: 220, padding: '10px', border: 'none', backgroundColor: "#2d2e37", borderRadius: 3, height: 200}}
         arrow={false}
         trigger={
           <span className = "ant-btn" style={{width: 120, borderRadius: 5, color: '#FFFFFF', borderColor: '#2d2e37', backgroundColor: '#2d2e37', display: 'flex', alignItems: 'center'}}>
             <span style={{marginRight: 10}}>
-              Contact
+              {counterpart.translate("community.contact")}
             </span>
             <Icon
                 size="1x"
@@ -648,18 +649,21 @@ class Profile extends React.Component {
     let defaultAvatar = require("assets/icons/default-avatar.png");
     Object.keys(this.state.users).map(key => {
       let user = this.state.users[key];
+      if(user == null || user == undefined) {
+        return;
+      }
       user.id = key;
       if(user.id !== this.state.user.id && this.isContact(user)) {
         userViews.push(
-          <div style={{marginBottom:"20px", cursor: "pointer"}} key={key}>
-            <div style={{marginBottom:"5px", display: 'flex'}}>
+          <div style={{marginBottom:"10px", cursor: "pointer"}} key={key}>
+            <div style={{display: 'flex'}}>
               <img
                 src={user.userImage == null || user.userImage == undefined || user.userImage == '' ? defaultAvatar : user.userImage}
                 style={{borderRadius:"50%", border: "none", width: "20px", height: "20px", backgroundColor: "#777777", marginRight:"3px"}}
               />
-              <span style={{color: "#777777",  marginRight:"20px", flex: 1, display: 'flex', alignItems: 'center'}}>
-                {user.id}
-              </span>
+            <span className="three-dot">
+              {user.id}
+            </span>
             </div>
           </div>
         );
@@ -944,21 +948,21 @@ class Profile extends React.Component {
                   key="submit"
                   type="primary"
                   onClick={() => {this.saveGroupInfo();}}>
-                  SAVE
+                  {counterpart.translate("community.save")}
               </Button>,
               <Button
                   key="cancel"
                   style={{marginLeft: "8px"}}
                   onClick={() => {this.closeGroupDetailModal();}}
               >
-                  CANCEL
+                  {counterpart.translate("community.cancel")}
               </Button>
           ]}
           visible={this.state.selectedGroup !== null && this.state.selectedGroup !== undefined}
           onCancel={this.closeGroupDetailModal}
       >
         <h2>
-          Group Info
+          {counterpart.translate("community.groupInfo")}
         </h2>
         <input onChange={this.onGroupNameChange} placeholder="Enter Group Name" ref="groupEditName" type="text" style={{backgroundColor: "#2d2e37", height: 30}} value={this.state.groupEditName}/>
         <input onChange={this.onGroupDescriptionChange} placeholder="Enter Group Description" ref="groupEditDescription" type="text" style={{marginTop: 30, backgroundColor: "#2d2e37", height: 30}} value={this.state.groupEditDescription}/>
@@ -967,7 +971,7 @@ class Profile extends React.Component {
             style={{marginTop: 30, marginBottom: 20}}
             onClick={() => {this.openInviteToGroupModal(this.state.selectedGroup); this.closeGroupDetailModal()}}
         >
-            +  Invite
+            +  {counterpart.translate("community.invite")}
         </Button>
         {userViews}
       </Modal>
@@ -990,24 +994,24 @@ class Profile extends React.Component {
                   key="submit"
                   type="primary"
                   onClick={() => {this.createGroup();}}>
-                  CREATE
+                  {counterpart.translate("community.create")}
               </Button>,
               <Button
                   key="cancel"
                   style={{marginLeft: "8px"}}
                   onClick={() => {this.closeCreateGroupModal();}}
               >
-                  CANCEL
+                  {counterpart.translate("community.cancel")}
               </Button>
           ]}
           visible={this.state.isShowCreateGroupModal}
           onCancel={this.closeCreateGroupModal}
       >
         <h2>
-          Create Group
+          {counterpart.translate("community.createGroup")}
         </h2>
-        <input placeholder="Enter Group Name" ref="groupName" type="text" style={{backgroundColor: "#2d2e37", height: 30}}/>
-        <input placeholder="Enter Group Description" ref="groupDescription" type="text" style={{marginTop: 30, backgroundColor: "#2d2e37", height: 30}}/>
+        <input placeholder={counterpart.translate("community.enterGroupName")} ref="groupName" type="text" style={{backgroundColor: "#2d2e37", height: 30}}/>
+        <input placeholder={counterpart.translate("community.enterGroupDescription")} ref="groupDescription" type="text" style={{marginTop: 30, backgroundColor: "#2d2e37", height: 30}}/>
       </Modal>
     );
   }
@@ -1025,21 +1029,21 @@ class Profile extends React.Component {
                   key="submit"
                   type="primary"
                   onClick={() => {this.closeRemoveGroupsModal();}}>
-                  DELETE
+                  {counterpart.translate("community.delete")}
               </Button>,
               <Button
                   key="cancel"
                   style={{marginLeft: "8px"}}
                   onClick={() => {this.closeRemoveGroupsModal();}}
               >
-                  CANCEL
+                  {counterpart.translate("community.cancel")}
               </Button>
           ]}
           visible={this.state.isShowRemoveGroupModal}
           onCancel={this.closeRemoveGroupsModal}
       >
         <h2>
-          Groups
+          {counterpart.translate("community.groups")}
         </h2>
         {this.renderRemovalGroups()}
       </Modal>
@@ -1067,14 +1071,14 @@ class Profile extends React.Component {
                   key="submit"
                   type="primary"
                   onClick={() => {this.removeContacts()}}>
-                  DELETE
+                  {counterpart.translate("community.delete")}
               </Button>,
               <Button
                   key="cancel"
                   style={{marginLeft: "8px"}}
                   onClick={() => {this.closeRemoveContactsModal();}}
               >
-                  CANCEL
+                  {counterpart.translate("community.cancel")}
               </Button>
           ]}
           visible={this.state.isShowRemoveContactModal}
@@ -1100,7 +1104,7 @@ class Profile extends React.Component {
           onCancel={this.closeInviteModal}
       >
         <h2>
-          Invites
+          {counterpart.translate("community.invites")}
         </h2>
         {this.renderInvites()}
       </Modal>
@@ -1119,7 +1123,7 @@ class Profile extends React.Component {
           onCancel={this.closeInviteToGroupModal}
       >
         <h2>
-          Invites
+          {counterpart.translate("community.invites")}
         </h2>
         {this.renderInvitesToGroup()}
       </Modal>
@@ -1160,10 +1164,10 @@ class Profile extends React.Component {
               style={{width: '100%', marginTop: 5, visibility: this.state.isEditStatus ? 'visible' : 'hidden'}}
             />
             <div style={{marginTop: 15}}>
-              Name
+              {counterpart.translate("community.name")}
             </div>
             <div style={{marginTop: 15}}>
-              <input placeholder="Enter User Name" ref="userName" type="text" style={{backgroundColor: "#2d2e37", height: 30, display: this.state.isEditStatus?  "block": "none"}}/>
+              <input placeholder={counterpart.translate("community.enterUserName")} ref="userName" type="text" style={{backgroundColor: "#2d2e37", height: 30, display: this.state.isEditStatus?  "block": "none"}}/>
               {!this.state.isEditStatus && (
                 <div style={{height: 30, padding: "0.5rem"}}>
                   {this.state.user === null || this.state.user.userName === null ? "" : this.state.user.userName}
@@ -1179,7 +1183,7 @@ class Profile extends React.Component {
                 </div>
               )}
               <textarea
-                placeholder="Enter Description"
+                placeholder={counterpart.translate("community.enterDescription")}
                 ref="description"
                 style={{resize: "none", width: '100%', height: 120, backgroundColor: '#2d2e37', marginTop: 20, display: this.state.isEditStatus?  "block": "none"}}>
               </textarea>
@@ -1202,10 +1206,10 @@ class Profile extends React.Component {
               style={{width: '100%', marginTop: 5, visibility: this.state.isEditStatus ? 'visible' : 'hidden'}}
             />
             <div style={{marginTop: 15}}>
-              Avatar Name
+              {counterpart.translate("community.avatarName")}
             </div>
             <div style={{marginTop: 15}}>
-              <input placeholder="Enter Avatar Name" ref="avatarName" type="text" style={{backgroundColor: "#2d2e37", height: 30, display: this.state.isEditStatus?  "block": "none"}}/>
+              <input placeholder={counterpart.translate("community.EnterAvatarName")} ref="avatarName" type="text" style={{backgroundColor: "#2d2e37", height: 30, display: this.state.isEditStatus?  "block": "none"}}/>
               {!this.state.isEditStatus && (
                 <div style={{height: 30, padding: "0.5rem"}}>
                   {this.state.user === null || this.state.user.avatarName === null ? "" : this.state.user.avatarName}
@@ -1229,13 +1233,13 @@ class Profile extends React.Component {
           </div>
           <div style={{flex: 0.4, textAlign: 'center'}}>
             <div>
-              Follower
+              {counterpart.translate("community.follower")}
             </div>
             <div style={{marginTop: 15}}>
-              Following
+              {counterpart.translate("community.following")}
             </div>
             <div style={{marginTop: 15}}>
-              Likes
+              {counterpart.translate("community.likes")}
             </div>
           </div>
           <div style={{flex: 0.3, textAlign: 'center'}}>
@@ -1272,7 +1276,7 @@ class Profile extends React.Component {
                 {this.getContactCount()}
               </div>
               <div className = "ant-btn" style={{textAlign: 'center', width: 120, marginTop: 10, borderRadius: 5, color: '#FFFFFF', borderColor: '#2d2e37', backgroundColor: '#2d2e37', display: 'flex', alignItems: 'center'}} onClick={() => {this.openInviteModal()}}>
-                invite
+                {counterpart.translate("community.invite")}
               </div>
             </div>
           </div>
@@ -1296,7 +1300,7 @@ class Profile extends React.Component {
                 {this.state.groups != null && this.state.groups != undefined ? Object.keys(this.state.groups).length : 0}
               </div>
               <div className = "ant-btn" style={{textAlign: 'center', width: 120, marginTop: 10, borderRadius: 5, color: '#FFFFFF', borderColor: '#2d2e37', backgroundColor: '#2d2e37', display: 'flex', alignItems: 'center'}} onClick={() => {this.setState({isShowCreateGroupModal: true})}}>
-                create
+                {counterpart.translate("community.create")}
               </div>
             </div>
           </div>

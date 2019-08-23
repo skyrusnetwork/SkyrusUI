@@ -23,6 +23,26 @@ import ifvisible from "ifvisible";
 import {getWalletName} from "branding";
 import {Modal, Button} from "bitshares-ui-style-guide";
 import AccountStore from "stores/AccountStore";
+import ButtonsGroup from "../Layout/ButtonsGroup";
+import Button2 from '../../assets/pngs/icon_bt2.png';
+import Button21 from '../../assets/pngs/icon_bt21.png';
+import Button22 from '../../assets/pngs/icon_bt22.png';
+import Button23 from '../../assets/pngs/icon_bt23.png';
+
+import Button3 from '../../assets/pngs/icon_bt3.png';
+import Button31 from '../../assets/pngs/icon_bt31.png';
+import Button32 from '../../assets/pngs/icon_bt32.png';
+import Button33 from '../../assets/pngs/icon_bt33.png';
+
+import Button4 from '../../assets/pngs/icon_bt4.png';
+import Button41 from '../../assets/pngs/icon_bt41.png';
+import Button42 from '../../assets/pngs/icon_bt42.png';
+import Button43 from '../../assets/pngs/icon_bt43.png';
+
+import Button5 from '../../assets/pngs/icon_bt5.png';
+import Button51 from '../../assets/pngs/icon_bt51.png';
+import Button52 from '../../assets/pngs/icon_bt52.png';
+import Button53 from '../../assets/pngs/icon_bt53.png';
 
 class Footer extends React.Component {
     static propTypes = {
@@ -373,6 +393,10 @@ class Footer extends React.Component {
       this.props.selectRightPanelLayout(content);
     }
 
+    _setLeftPanel(content){
+      this.props.selectLeftPanelLayout(content);
+    }
+
     onBackup() {
         this.props.history.push("/wallet/backup/create");
     }
@@ -404,96 +428,57 @@ class Footer extends React.Component {
         let bottomMenuContainer = null;
         let rightPanelMenu;
         let bottomRightMenu;
-        if(this.state.rightPanelContent == "liveChat"){
-          rightPanelMenu = (
-            <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
-              <div title={"AIBot"} className = "circle-button" style = {{marginLeft: 20}}></div>
-              <div title={"ActionPanels"} className = "circle-button" style = {{marginLeft: 10}} onClick={this._setRightPanel.bind(this, "actionCardPane")}></div>
-              <div title={"EmotionIndicator"} className = "circle-button" style = {{marginLeft: 10}} onClick={this._setRightPanel.bind(this, "emotionIndicator")}></div>
-            </div>
-          );
-          bottomRightMenu = (
-            <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
-              <div title={"LiveChat"} className = "circle-button active" style = {{marginLeft: 20}}></div>
-              <div title={"Posts"} className = "circle-button" style = {{marginLeft: 10}} onClick={this._setRightPanel.bind(this, "Posts")}></div>
-              <div title={"Reserved"} className = "circle-button" style = {{marginLeft: 10}}></div>
-            </div>
-          );
-        }
-        else if(this.state.rightPanelContent == "alBot"){
-          rightPanelMenu = (
-            <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
-            </div>
-          );
-          bottomRightMenu = (
-            <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
-            </div>
-          );
-        }
-        else if(this.state.rightPanelContent == "marketPredict"){
-          rightPanelMenu = (
-            <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
-            </div>
-          );
-          bottomRightMenu = (
-            <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
-            </div>
-          );
-        }
-        else if(this.state.rightPanelContent == "actionCardPane") {
-          rightPanelMenu = (
-            <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
-              <div title={"AIBot"} className = "circle-button" style = {{marginLeft: 20}}></div>
-              <div title={"ActionPanels"} className = "circle-button active" style = {{marginLeft: 10}}></div>
-              <div title={"EmotionIndicator"} className = "circle-button" style = {{marginLeft: 10}} onClick={this._setRightPanel.bind(this, "emotionIndicator")}></div>
-            </div>
-          );
-          bottomRightMenu = (
-            <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
-              <div title={"LiveChat"} className = "circle-button" style = {{marginLeft: 20}} onClick={this._setRightPanel.bind(this, "liveChat")}></div>
-              <div title={"Posts"} className = "circle-button" style = {{marginLeft: 10}} onClick={this._setRightPanel.bind(this, "Posts")}></div>
-              <div title={"Reserved"} className = "circle-button" style = {{marginLeft: 10}}></div>
-            </div>
-          );
-        }
-        else if(this.state.rightPanelContent == "emotionIndicator") {
-          rightPanelMenu = (
-            <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
-              <div title={"AIBot"} className = "circle-button" style = {{marginLeft: 20}}></div>
-              <div title={"ActionPanels"} className = "circle-button" style = {{marginLeft: 10}} onClick={this._setRightPanel.bind(this, "actionCardPane")}></div>
-              <div title={"EmotionIndicator"} className = "circle-button active" style = {{marginLeft: 10}}></div>
-            </div>
-          );
-          bottomRightMenu = (
-            <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
-              <div title={"LiveChat"} className = "circle-button" style = {{marginLeft: 20}} onClick={this._setRightPanel.bind(this, "liveChat")}></div>
-              <div title={"Posts"} className = "circle-button" style = {{marginLeft: 10}} onClick={this._setRightPanel.bind(this, "Posts")}></div>
-              <div title={"Reserved"} className = "circle-button" style = {{marginLeft: 10}}></div>
-            </div>
-          );
-        }
-        else if(this.state.rightPanelContent == "Posts"){
-          rightPanelMenu = (
-            <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
-              <div title={"AIBot"} className = "circle-button" style = {{marginLeft: 20}}></div>
-              <div title={"ActionPanels"} className = "circle-button" style = {{marginLeft: 10}} onClick={this._setRightPanel.bind(this, "actionCardPane")}></div>
-              <div title={"EmotionIndicator"} className = "circle-button" style = {{marginLeft: 10}} onClick={this._setRightPanel.bind(this, "emotionIndicator")}></div>
-            </div>
-          );
-          bottomRightMenu = (
-            <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
-              <div title={"LiveChat"} className = "circle-button" style = {{marginLeft: 20}} onClick={this._setRightPanel.bind(this, "liveChat")}></div>
-              <div title={"Posts"} className = "circle-button active" style = {{marginLeft: 10}}></div>
-              <div title={"Reserved"} className = "circle-button" style = {{marginLeft: 10}}></div>
-            </div>
-          );
-        }
+        rightPanelMenu = (
+          <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
+            <ButtonsGroup
+              title1="AIBot"
+              title2={"ActionPanels"}
+              title3={"EmotionIndicator"}
+              button1={Button4}
+              button2={Button41}
+              button3={Button42}
+              button4={Button43}
+              onClickButton1={() => {}}
+              onClickButton2={this._setRightPanel.bind(this, "actionCardPane")}
+              onClickButton3={this._setRightPanel.bind(this, "emotionIndicator")}
+              />
+          </div>
+        );
+        bottomRightMenu = (
+          <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
+            <ButtonsGroup
+              title1="LiveChat"
+              title2={"Posts"}
+              title3={"Reserved"}
+              button1={Button5}
+              button2={Button51}
+              button3={Button52}
+              button4={Button53}
+              onClickButton1={this._setRightPanel.bind(this, "liveChat")}
+              onClickButton2={this._setRightPanel.bind(this, "Posts")}
+              onClickButton3={() => {}}
+              />
+          </div>
+        );
 
         if (this.state.centerContent == "Wallet") {
           bottomMenuContainer = (
             <div
               style={tinyScreen? {height: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: '#191a1f', borderTopColor: '#6d6d6d', borderStyle: 'groove', marginTop: -2, borderBottomWidth: 0, borderLeftWidth: 0, borderRightWidth: 0 } : {height: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: '#191a1f', borderTopColor: '#6d6d6d', display: 'flex', borderBottomWidth: 0, borderLeftWidth: 0, borderRightWidth: 0, borderStyle: 'groove', marginTop: -2}}>
-              <div style={{width: 349}}></div>
+              <div style={{width: 379}}>
+                <ButtonsGroup
+                  title1=""
+                  title2=""
+                  title3=""
+                  button1={Button2}
+                  button2={Button21}
+                  button3={Button22}
+                  button4={Button23}
+                  onClickButton1={this._setLeftPanel.bind(this, "liveFeed")}
+                  onClickButton2={() => {}}
+                  onClickButton3={() => {}}
+                  />
+              </div>
               <div style={{display: 'flex', flex: 0.33}}>
                 <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
                   {/*<div title={"LiveChat"} className = "circle-button" style = {{marginLeft: 20}}></div>
@@ -505,23 +490,23 @@ class Footer extends React.Component {
                 <button className = "ant-btn"
                     onClick={this.props.send}
                     style={{marginRight: 10}}>
-                    SEND
+                    {counterpart.translate("header.payments")}
                 </button>
                 <button className = "ant-btn"
                     onClick={this.props.withdraw}
                     style={{marginLeft: 10}}>
-                    WITHDRAW
+                    {counterpart.translate("icons.withdraw")}
                 </button>
                 <button className = "ant-btn"
                     onClick={this.props.deposit}
                     style={{marginLeft: 10}}>
-                    DEPOSIT
+                    {counterpart.translate("icons.deposit.deposit")}
                 </button>
               </div>
               <div style={{display: 'flex', flex: 0.33}}>
 
               </div>
-              <div style={{width: 378, display: 'flex'}}>
+              <div style={{width: 378, display: 'flex', alignItems: 'center'}}>
                 {rightPanelMenu}
                 <div style={{margin: 0, padding: 5, textAlign: "right"}}>
                   {bottomRightMenu}
@@ -533,27 +518,49 @@ class Footer extends React.Component {
           bottomMenuContainer = (
             <div
               style={tinyScreen? {height: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: '#191a1f', borderTopColor: '#6d6d6d', borderStyle: 'groove', marginTop: -2, borderBottomWidth: 0, borderLeftWidth: 0, borderRightWidth: 0 } : {height: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: '#191a1f', borderTopColor: '#6d6d6d', display: 'flex', borderBottomWidth: 0, borderLeftWidth: 0, borderRightWidth: 0, borderStyle: 'groove', marginTop: -2}}>
-              <div style={{width: 349}}></div>
-              <div style={{display: 'flex', flex: 0.5}}>
+              <div style={{width: 379}}>
+                <ButtonsGroup
+                  title1=""
+                  title2=""
+                  title3=""
+                  button1={Button2}
+                  button2={Button21}
+                  button3={Button22}
+                  button4={Button23}
+                  onClickButton1={this._setLeftPanel.bind(this, "liveFeed")}
+                  onClickButton2={() => {}}
+                  onClickButton3={() => {}}
+                  />
+              </div>
+              <div style={{display: 'flex', flex: 0.5, alignItems: 'center'}}>
                 <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
-                  {/*<div title={"LiveChat"} className = "circle-button" style = {{marginLeft: 20}}></div>
-                  <div title={"Posts"} className = "circle-button" style = {{marginLeft: 10}}></div>
-                  <div title={"Reserved"} className = "circle-button" style = {{marginLeft: 10}}></div>*/}
+                  <ButtonsGroup
+                    title1=""
+                    title2=""
+                    title3=""
+                    button1={Button3}
+                    button2={Button31}
+                    button3={Button32}
+                    button4={Button33}
+                    onClickButton1={() => {}}
+                    onClickButton2={() => {}}
+                    onClickButton3={() => {}}
+                    />
                 </div>
                 <button className = "ant-btn"
-                    style={{marginRight: 10}}
+                    style={{marginRight: 4, backgroundColor: '#249624', borderColor: '#249624', color: 'white', borderRadius: 4}}
                     onClick={this.openBuyModal}>
-                    BUY
+                    {counterpart.translate("exchange.buy")}
                 </button>
               </div>
               <div style={{display: 'flex', flex: 0.5}}>
                 <button className = "ant-btn"
-                     style={{marginLeft: 10}}
+                     style={{marginLeft: 4, backgroundColor: '#FF0000', borderColor: '#FF0000', color: 'white', borderRadius: 4}}
                      onClick={this.openSellModal}>
-                    SELL
+                    {counterpart.translate("exchange.sell")}
                 </button>
               </div>
-              <div style={{width: 378, display: 'flex'}}>
+              <div style={{width: 378, display: 'flex', alignItems: 'center'}}>
                 {rightPanelMenu}
                 <div style={{margin: 0, padding: 5, textAlign: "right"}}>
                   {bottomRightMenu}
@@ -565,7 +572,20 @@ class Footer extends React.Component {
           bottomMenuContainer = (
             <div
               style={tinyScreen? {height: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: '#191a1f', borderTopColor: '#6d6d6d', borderStyle: 'groove', marginTop: -2, borderBottomWidth: 0, borderLeftWidth: 0, borderRightWidth: 0 } : {height: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: '#191a1f', borderTopColor: '#6d6d6d', display: 'flex', borderBottomWidth: 0, borderLeftWidth: 0, borderRightWidth: 0, borderStyle: 'groove', marginTop: -2}}>
-              <div style={{width: 349}}></div>
+              <div style={{width: 379}}>
+                <ButtonsGroup
+                  title1=""
+                  title2=""
+                  title3=""
+                  button1={Button2}
+                  button2={Button21}
+                  button3={Button22}
+                  button4={Button23}
+                  onClickButton1={this._setLeftPanel.bind(this, "liveFeed")}
+                  onClickButton2={() => {}}
+                  onClickButton3={() => {}}
+                  />
+              </div>
               <div style={{display: 'flex', flex: 0.5}}>
                 <div style={{margin: 0, padding: 5, textAlign: "left", flex: 1}}>
                   {/*<div title={"LiveChat"} className = "circle-button" style = {{marginLeft: 20}}></div>
@@ -576,7 +596,7 @@ class Footer extends React.Component {
               </div>
               <div style={{display: 'flex', flex: 0.5}}>
               </div>
-              <div style={{width: 378, display: 'flex'}}>
+              <div style={{width: 378, display: 'flex', alignItems: 'center'}}>
                 {rightPanelMenu}
                 <div style={{margin: 0, padding: 5, textAlign: "right"}}>
                   {bottomRightMenu}
@@ -625,6 +645,7 @@ class Footer extends React.Component {
             bottomMenuContainer = null;
           }
         }
+        let footerImg = require("assets/pngs/TranscendOrdinary.png");
         return (
             <div style={{alignItems: 'center', justifyContent: 'center'}}>
                 {!!routerTransitioner &&
@@ -677,7 +698,7 @@ class Footer extends React.Component {
                     </div>
                 </ChoiceModal>
                 {bottomMenuContainer}
-                <div className="show-for-medium grid-block shrink footer" style={{height: 45}}>
+                <div className="show-for-medium grid-block shrink footer" style={{height: 70}}>
                     <div className="align-justify grid-block">
                         <div className="grid-block">
                             <div
@@ -692,7 +713,9 @@ class Footer extends React.Component {
                                     marginTop: state.newVersion
                                         ? "-5px"
                                         : "0px",
-                                    overflow: "hidden"
+                                    overflow: "hidden",
+                                    display: 'flex',
+                                    alignItems: 'center'
                                 }}
                                 onClick={
                                     state.newVersion
@@ -829,7 +852,9 @@ class Footer extends React.Component {
                                     }}
                                     style={{
                                         position: "relative",
-                                        cursor: "pointer"
+                                        cursor: "pointer",
+                                        display: 'flex',
+                                        alignItems: 'center'
                                     }}
                                 >
                                     <div className="footer-status">
@@ -876,13 +901,13 @@ class Footer extends React.Component {
                         this.setState({showNodesPopup: false});
                     }}
                     className="node-access-popup"
-                    style={{display: this.state.showNodesPopup ? "" : "none"}}
+                    style={{display: this.state.showNodesPopup ? "none" : "none"}}
                 >
                     <AccessSettings
                         nodes={this.props.defaults.apiServer}
                         popup={true}
                     />
-                    <div style={{paddingTop: 15}}>
+                    <div style={{paddingTop: 15, display: 'none'}}>
                         <a onClick={this.onAccess.bind(this)}>
                             <Translate content="footer.advanced_settings" />
                         </a>
@@ -897,6 +922,9 @@ class Footer extends React.Component {
                         if (e) this.reportModal = e;
                     }}
                 />
+              <div style={{position: 'absolute', left: 0, right: 0, bottom: 23, textAlign: 'center'}}>
+                  <img src={footerImg} style={{height: 20}}/>
+                </div>
             </div>
         );
     }

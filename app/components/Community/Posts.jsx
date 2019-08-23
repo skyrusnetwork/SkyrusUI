@@ -6,6 +6,7 @@ import fire from "../firebase";
 import FileUploader from "react-firebase-file-uploader";
 import {Select, Row, Col, Button, Modal} from "bitshares-ui-style-guide";
 import Popup from "reactjs-popup";
+import counterpart from "counterpart";
 import {Notification} from "bitshares-ui-style-guide";
 const database = fire.database();
 const storage = fire.storage();
@@ -235,7 +236,7 @@ class Posts extends React.Component {
           contentStyle={{ width: 150, padding: '10px', border: 'none', backgroundColor: "#2d2e37", borderRadius: 3}}
           arrow={false}
           trigger={<img style={{width: 20, marginRight: 10}} src={require("assets/pngs/icon-more.png")}/>} position="right center">
-          <div onClick={() => {this.invite(post)}}>Invite</div>
+          <div onClick={() => {this.invite(post)}}>{counterpart.translate("community.invite")}</div>
         </Popup>
       </div>
     );
@@ -328,7 +329,7 @@ class Posts extends React.Component {
             style={{marginLeft: 30}}
             onClick={() => {this.toogleFollow(post)}}
         >
-            Following
+            {counterpart.translate("community.following")}
         </Button>
       );
     } else {
@@ -338,7 +339,7 @@ class Posts extends React.Component {
             style={{marginLeft: 30}}
             onClick={() => {this.toogleFollow(post)}}
         >
-            +  Follow
+            +  {counterpart.translate("community.follow")}
         </Button>
       );
     }
@@ -404,7 +405,7 @@ class Posts extends React.Component {
             style={{borderRadius:"50%", border: "none", width: "30px", height: "30px", backgroundColor: "#777777", marginRight:"3px"}}
           />
           <span style={{color: "#2580be",  marginLeft:"20px"}}>
-              {post.value.user.userName || post.value.user.id}
+              {post.value.user.userName !== null && post.value.user.userName !== undefined && post.value.user.userName !== 'undefined' ? post.value.user.userName : post.value.user.id}
           </span>
           <div>
             <span style={{color: "#444444", fontSize:"11px", marginLeft: 50}}>
@@ -421,7 +422,7 @@ class Posts extends React.Component {
             style={{borderRadius:"50%", border: "none", width: "30px", height: "30px", backgroundColor: "#777777", marginRight:"3px"}}
           />
           <span style={{color: "#2580be",  marginLeft:"20px"}}>
-              {post.value.user.avatarName || post.value.user.id}
+              {post.value.user.userName !== null && post.value.user.userName !== undefined && post.value.user.userName !== 'undefined' ? post.value.user.userName : post.value.user.id}
           </span>
           <div>
             <span style={{color: "#444444", fontSize:"11px", marginLeft: 50}}>
@@ -447,7 +448,7 @@ class Posts extends React.Component {
     } = this._getThemeColors();
     let defaultAvatar = require("assets/icons/default-avatar.png");
     return (
-      <div style={{width: "100%", height: '100%', paddingBottom: 38}} ref="postScroll">
+      <div style={{width: "100%", height: '100%', paddingBottom: 38, position: 'relative'}} ref="postScroll">
         {this.renderPosts()}
       </div>
     );

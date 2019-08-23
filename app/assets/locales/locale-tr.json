@@ -209,11 +209,11 @@
         "total_value": "Toplam değeri",
         "trade": "Takas",
         "transactions": {
-            "fee": "Fee",
+            "fee": "ücret",
             "id": "ID",
-            "info": "Info",
-            "time": "Time",
-            "type": "Type"
+            "info": "Bilgi",
+            "time": "zaman",
+            "type": "tip"
         },
         "transfer_actions": "Transfer işlemleri",
         "unfollow": "Takibi bırak",
@@ -461,13 +461,13 @@
         }
     },
     "dashboard": {
-        "featured_markets": "Featured Markets",
-        "starred_markets": "Starred Markets",
-        "table_empty": "No market matched",
-        "top_markets": "Top Markets"
+        "featured_markets": "Öne Çıkan Pazarlar",
+        "starred_markets": "Yıldızlı Pazarlar",
+        "table_empty": "Eşleşen pazar yok",
+        "top_markets": "En iyi pazarlar"
     },
     "exchange": {
-        "add_quote": "Add",
+        "add_quote": "Eklemek",
         "asks": "Satış emirleri",
         "atr": "Ortalama Gerçek Fiyat Aralığı",
         "balance": "Bakiye",
@@ -498,7 +498,7 @@
         "ema": "Üssel Hareketli Ortalama",
         "featured": "Öne Çıkan Piyasalar",
         "feed_price": "Feed Price",
-        "filter": "Filter...",
+        "filter": "Filtre ...",
         "flip": "Flip",
         "group_order_limit": "grup",
         "hide": "Gizle",
@@ -510,11 +510,13 @@
         "invalid_price": "Geçersiz fiyat",
         "invert": "Fiyatı ters çevir",
         "latest": "En Son",
+        "limit_order": "Limit Sırası",
         "lowest_ask": "En düşük",
         "maintenance": "Sürdürme Çağrı Fiyatı",
         "market": "Piyasa",
         "market_frozen": "The owner of %(asset)s has disabled trading in this market.",
         "market_name": "Piyasalarım",
+        "market_order": "Market siparişi",
         "market_picker": {
             "filter_by_issuer": "Filter by issuer",
             "find_by_asset": "Find by asset",
@@ -587,8 +589,8 @@
                 "chart_zoom": "Allow Zoom",
                 "hide_function_buttons": "Hide function buttons",
                 "market_location": "Market location",
-                "market_trades": "Market Trades",
-                "my_trades": "My Trades",
+                "market_trades": "Piyasa işlemleri",
+                "my_trades": "İşlemlerim",
                 "open_orders": "Open Orders",
                 "order_book_grouping": "Order Book Grouping",
                 "order_style": "Style",
@@ -633,8 +635,8 @@
         "show_all_trades": "Show all %(rowcount)s trades",
         "show_asks": "Tümünü göster",
         "show_bids": "Tüm alışları göster",
-        "show_only_liquid": "Show liquid markets only",
-        "show_only_star_formatter": "Show {star_icon} only",
+        "show_only_liquid": "Sadece likit pazarları göster",
+        "show_only_star_formatter": "Yalnızca {star_icon} göster",
         "sma": "Basit Hareketli Ortalama",
         "spread": "Makas",
         "squeeze": "Teminat Tamamlama Çağrısı Fiyatı",
@@ -889,7 +891,8 @@
             "rudex": "",
             "trade": "<br/><br/>Bu dijital varlık Skyrus üzerinde %(backed)s işlemleri yapmanız için BlockTrades tarafından %%100 %(backed)s rezervi ile desteklenmektedir. İstediğiniz zaman 1:1 oranında %(asset)s-%(backed)s dönüşümü yapabilirsiniz.",
             "win": "",
-            "xbts": ""
+            "xbts": "",
+            "skyrus": "SKX"
         },
         "balance": "Mevcut Bakiye",
         "balance_asset": "Current %(asset)s balance",
@@ -1057,7 +1060,11 @@
         "unlock_short": "Giriş",
         "unlocked_tip": "Cüzdan kilidi açık .<br/>Kilitlemek için tıkla.",
         "update_asset": "Dijital Varlık Güncelle",
-        "withdraw_legacy": "or Legacy Withdraw"
+        "withdraw_legacy": "or Legacy Withdraw",
+        "community": "Topluluk",
+        "investment": "Yatırım",
+        "screensaver": "Ekran koruyucusu",
+        "chainFinancing": "Zincir Finansmanı"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -1091,7 +1098,7 @@
         },
         "dashboard": "Dashboard",
         "deposit": {
-            "deposit": "Deposit",
+            "deposit": "Depozito",
             "deposit_withdraw": "Deposit/Withdraw"
         },
         "disconnected": "API Node is disconnected",
@@ -1110,7 +1117,7 @@
             "sort_accounts": "Sort by favorites",
             "symbol": "Add/remove symbol from favorites"
         },
-        "filter": "Filter",
+        "filter": "filtre",
         "folder": "Accounts",
         "hamburger": "Open menu",
         "hamburger_x": "Close menu",
@@ -1119,8 +1126,8 @@
         "key": "Key",
         "list": "Whitelist",
         "locked": {
-            "action": "Click to unlock your account to perform this action",
-            "common": "Click to unlock your account",
+            "action": "Bu işlemi gerçekleştirmek için hesabınızın kilidini açmak için tıklayın",
+            "common": "Hesabınızın kilidini açmak için tıklayın",
             "enable_auto_scroll": "Enable auto scroll"
         },
         "manage_accounts": "Manage Accounts",
@@ -1158,7 +1165,7 @@
         },
         "transfer": "Send",
         "unlocked": {
-            "common": "Click to lock your account",
+            "common": "Hesabınızı kilitlemek için tıklayın",
             "disable_auto_scroll": "Disable auto scroll"
         },
         "user": {
@@ -1167,7 +1174,7 @@
             "following": "You are following this user"
         },
         "warning": "Permissions",
-        "withdraw": "Withdraw",
+        "withdraw": "Çekil",
         "zoom": "Search"
     },
     "incognito": {
@@ -1195,7 +1202,24 @@
         "selectDifferent": "Select different file",
         "supportWarning": "Warning! You browser doesn't support some some file operations required to restore backup, we recommend you to use Chrome or Firefox browsers to restore your backup.",
         "title": "Select Login Type",
-        "withoutBinFile": "I don't have .bin-file"
+        "withoutBinFile": "I don't have .bin-file",
+        "pdfWhitepaper": "PDF BEYAZ KAĞIT",
+        "buyIco": "ICO'YU ALIN",
+        "whitepaper": "BEYAZ KAĞIT",
+        "fillThePower": "Hibrit Değişimin Gücünü Hissedin",
+        "theFastest": "Merkezileşmemiş en hızlı ve merkezileşmiş borsaların en güvenlisi",
+        "joinUs": "Bize katılın ve farkı tecrübe edin",
+        "paperMoney": "Kağıt para",
+        "termsOfUse": "Kullanım Şartları",
+        "privacyPolicy": "Gizlilik Politikası",
+        "cookiePolicy": "Çerez politikası",
+        "referralDescription": "Arkadaş başına 5 $ kazanabilmek için, lütfen arkadaşlarından AirDrop Kampanyası'nda (1) + (2) + (3) 'u tamamladıktan sonra kullanıcı adlarını, telgraflarını, twitter URL'lerini, ülkelerini ve kullanıcı adlarını aşağıya doldurmalarını isteyin. Tüm IP adresleri günlüğe kaydedilir.",
+        "myUsername": "Yeni Hesaptaki Kullanıcı Adım",
+        "myTelegram": "Benim telgraf",
+        "myTwitter": "Twitter Url’im",
+        "CountryResidence": "İkamet edilen ülke",
+        "myReferralUsername": "Tavsiyemin Kullanıcı Adı",
+        "submit": "Gönder"
     },
     "markets": {
         "base": "Taban Aktif",
@@ -2115,5 +2139,45 @@
             "finalNumber": "Actual amount ：%(final_number)s",
             "winAmount": "Minimum amount: %(min_amount)s %(asset)s"
         }
+    },
+    "community": {
+      "chatPlaceholder": "Buraya bir mesaj yazın",
+      "profile": "Profil",
+      "message": "Mesaj",
+      "post": "posta",
+      "notification": "Bildirim",
+      "name": "isim",
+      "contact": "Temas",
+      "invite": "Davet et",
+      "follower": "takipçi",
+      "following": "Takip etme",
+      "likes": "Seviyor",
+      "group": "grup",
+      "create": "yaratmak",
+      "invites": "Davetler",
+      "sent": "Gönderilen",
+      "accepted": "Kabul edilmiş",
+      "contacts": "İletişim",
+      "delete": "silmek",
+      "cancel": "İptal etmek",
+      "groupInfo": "Grup Bilgisi",
+      "save": "Kayıt etmek",
+      "groups": "Gruplar",
+      "avatarName": "Karakter adı",
+      "createGroup": "Grup Oluştur",
+      "enterGroupName": "Grup Adını Girin",
+      "enterGroupDescription": "Grup Açıklaması Girin",
+      "enterDescription": "Açıklama girin",
+      "enterUserName": "Kullanıcı Adını Girin",
+      "EnterAvatarName": "Avatar Adını Girin",
+      "welcomeMessage": "Sohbete hoş geldiniz!",
+      "tapContact": "Sohbeti başlatmak için İletişim öğesine dokunun.",
+      "friend": "arkadaş",
+      "friends": "Arkadaş",
+      "postPreview": "Yayın Önizlemesi",
+      "follow": "Takip et",
+      "howCanI": "Sana nasıl yardım edebilirim? Lütfen endişeniz hakkında bir şeyler söylemekten çekinmeyin.",
+      "welcome": "Hoşgeldiniz!",
+      "skyrusLiveChat": "Skyrus Canlı Sohbet"
     }
 }

@@ -209,11 +209,11 @@
         "total_value": "Valore totale",
         "trade": "Trading",
         "transactions": {
-            "fee": "Fee",
+            "fee": "tassa",
             "id": "ID",
-            "info": "Info",
-            "time": "Time",
-            "type": "Type"
+            "info": "Informazioni",
+            "time": "Tempo",
+            "type": "genere"
         },
         "transfer_actions": "Trasferimenti",
         "unfollow": "Rimuovere",
@@ -461,13 +461,13 @@
         }
     },
     "dashboard": {
-        "featured_markets": "Featured Markets",
-        "starred_markets": "Starred Markets",
-        "table_empty": "No market matched",
-        "top_markets": "Top Markets"
+        "featured_markets": "Mercati in primo piano",
+        "starred_markets": "Mercati stellati",
+        "table_empty": "Nessun mercato abbinato",
+        "top_markets": "I migliori mercati"
     },
     "exchange": {
-        "add_quote": "Add",
+        "add_quote": "Inserisci",
         "asks": "Ordini di vendita",
         "atr": "Average True Range",
         "balance": "Saldo",
@@ -498,7 +498,7 @@
         "ema": "Exponential Moving Average",
         "featured": "Mercati top",
         "feed_price": "Feed Price",
-        "filter": "Filter...",
+        "filter": "Filtro...",
         "flip": "Flip",
         "group_order_limit": "Gruppo",
         "hide": "Nascondi",
@@ -510,11 +510,13 @@
         "invalid_price": "Prezzo non valido",
         "invert": "Inverti il prezzo",
         "latest": "Ultimo prezzo",
+        "limit_order": "limite Ordine",
         "lowest_ask": "Offerta (ask) più bassa",
         "maintenance": "Prezzo Maintenance Call",
         "market": "Mercato",
         "market_frozen": "Il proprietario di %(asset)s ha disabilitato il trading in questo mercato.",
         "market_name": "I miei mercati",
+        "market_order": "Mercato Ordine",
         "market_picker": {
             "filter_by_issuer": "Filter by issuer",
             "find_by_asset": "Find by asset",
@@ -587,8 +589,8 @@
                 "chart_zoom": "Allow Zoom",
                 "hide_function_buttons": "Hide function buttons",
                 "market_location": "Market location",
-                "market_trades": "Market Trades",
-                "my_trades": "My Trades",
+                "market_trades": "Commerci di mercato",
+                "my_trades": "I miei mestieri",
                 "open_orders": "Open Orders",
                 "order_book_grouping": "Order Book Grouping",
                 "order_style": "Style",
@@ -633,8 +635,8 @@
         "show_all_trades": "Show all %(rowcount)s trades",
         "show_asks": "Mostra tutte le ask",
         "show_bids": "Mostra tutte le bid",
-        "show_only_liquid": "Show liquid markets only",
-        "show_only_star_formatter": "Show {star_icon} only",
+        "show_only_liquid": "Mostra solo mercati liquidi",
+        "show_only_star_formatter": "Mostra solo {star_icon}",
         "sma": "Simple Moving Average",
         "spread": "Spread",
         "squeeze": "Prezzo Margin Call",
@@ -889,7 +891,8 @@
             "rudex": "",
             "trade": "<br/><br/>L'asset %(asset)s è garantito 1:1 da %(backed)s reali e può essere depositato o ritirato usando il servizio di gateway fornito da Blocktrades.",
             "win": "",
-            "xbts": ""
+            "xbts": "",
+            "skyrus": "SKX"
         },
         "balance": "Saldo attuale",
         "balance_asset": "Saldo %(asset)s attuale",
@@ -1057,7 +1060,11 @@
         "unlock_short": "Login",
         "unlocked_tip": "<br/>Clicca per fare il logout e bloccare il tuo portafoglio.<br/><br/>Chiudere la finestra del browser effettuerà automaticamente il log out.",
         "update_asset": "Aggiorna Asset",
-        "withdraw_legacy": "or Legacy Withdraw"
+        "withdraw_legacy": "or Legacy Withdraw",
+        "community": "Comunità",
+        "investment": "Investimento",
+        "screensaver": "Salvaschermo",
+        "chainFinancing": "Finanziamento a catena"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -1091,7 +1098,7 @@
         },
         "dashboard": "Dashboard",
         "deposit": {
-            "deposit": "Deposit",
+            "deposit": "Depositare",
             "deposit_withdraw": "Deposit/Withdraw"
         },
         "disconnected": "API Node is disconnected",
@@ -1110,7 +1117,7 @@
             "sort_accounts": "Sort by favorites",
             "symbol": "Add/remove symbol from favorites"
         },
-        "filter": "Filter",
+        "filter": "Filtro",
         "folder": "Accounts",
         "hamburger": "Open menu",
         "hamburger_x": "Close menu",
@@ -1119,8 +1126,8 @@
         "key": "Key",
         "list": "Whitelist",
         "locked": {
-            "action": "Click to unlock your account to perform this action",
-            "common": "Click to unlock your account",
+            "action": "Fai clic per sbloccare il tuo account per eseguire questa azione",
+            "common": "Fai clic per sbloccare il tuo account",
             "enable_auto_scroll": "Enable auto scroll"
         },
         "manage_accounts": "Manage Accounts",
@@ -1158,7 +1165,7 @@
         },
         "transfer": "Send",
         "unlocked": {
-            "common": "Click to lock your account",
+            "common": "Fai clic per bloccare il tuo account",
             "disable_auto_scroll": "Disable auto scroll"
         },
         "user": {
@@ -1167,7 +1174,7 @@
             "following": "You are following this user"
         },
         "warning": "Permissions",
-        "withdraw": "Withdraw",
+        "withdraw": "ritirarsi",
         "zoom": "Search"
     },
     "incognito": {
@@ -1195,7 +1202,24 @@
         "selectDifferent": "Select different file",
         "supportWarning": "Warning! You browser doesn't support some some file operations required to restore backup, we recommend you to use Chrome or Firefox browsers to restore your backup.",
         "title": "Select Login Type",
-        "withoutBinFile": "I don't have .bin-file"
+        "withoutBinFile": "I don't have .bin-file",
+        "pdfWhitepaper": "PDF CARTA BIANCA",
+        "buyIco": "ACQUISTA ICO",
+        "whitepaper": "CARTA BIANCA",
+        "fillThePower": "Senti la potenza di uno scambio ibrido",
+        "theFastest": "Il più veloce degli scambi centralizzati e il più sicuro degli scambi centralizzati",
+        "joinUs": "Unisciti a noi e prova la differenza",
+        "paperMoney": "Cartamoneta",
+        "termsOfUse": "Condizioni d'uso",
+        "privacyPolicy": "politica sulla riservatezza",
+        "cookiePolicy": "Cookie policy",
+        "referralDescription": "Per guadagnare $ 5 per amico, chiedi ai tuoi amici di inserire il loro nome utente, il loro telegramma, il loro url di Twitter, il loro paese e il tuo nome utente di seguito dopo aver completato (1) + (2) + (3) nella campagna AirDrop. Tutti gli indirizzi IP sono registrati.",
+        "myUsername": "Il mio nome utente nel nuovo account",
+        "myTelegram": "My Telegram",
+        "myTwitter": "Il mio URL di Twitter",
+        "CountryResidence": "Paese di residenza",
+        "myReferralUsername": "Nome utente di My Referral",
+        "submit": "Sottoscrivi"
     },
     "markets": {
         "base": "Asset di base",
@@ -2115,5 +2139,45 @@
             "finalNumber": "Actual amount ：%(final_number)s",
             "winAmount": "Minimum amount: %(min_amount)s %(asset)s"
         }
+    },
+    "community": {
+      "chatPlaceholder": "Digita qui un messaggio",
+      "profile": "Profilo",
+      "message": "Messaggio",
+      "post": "Inviare",
+      "notification": "Notifica",
+      "name": "Nome",
+      "contact": "Contatto",
+      "invite": "Invitare",
+      "follower": "Seguace",
+      "following": "A seguire",
+      "likes": "Piace",
+      "group": "Gruppo",
+      "create": "Creare",
+      "invites": "Inviti",
+      "sent": "Inviato",
+      "accepted": "Accettato",
+      "contacts": "Contatti",
+      "delete": "Elimina",
+      "cancel": "Annulla",
+      "groupInfo": "Informazioni sul gruppo",
+      "save": "Salvare",
+      "groups": "gruppi",
+      "avatarName": "Nome Avatar",
+      "createGroup": "Crea gruppo",
+      "enterGroupName": "Inserisci il nome del gruppo",
+      "enterGroupDescription": "Inserisci la descrizione del gruppo",
+      "enterDescription": "Inserisci descrizione",
+      "enterUserName": "Inserisci il nome utente",
+      "EnterAvatarName": "Inserisci il nome dell'avatar",
+      "welcomeMessage": "Benvenuto nella conversazione!",
+      "tapContact": "Tocca Contatto per iniziare la conversazione.",
+      "friend": "amico",
+      "friends": "Amici",
+      "postPreview": "Anteprima post",
+      "follow": "Seguire",
+      "howCanI": "Come posso aiutarla? Sentiti libero di dire qualcosa sulla tua preoccupazione.",
+      "welcome": "Benvenuto!",
+      "skyrusLiveChat": "Chat live di Skyrus"
     }
 }

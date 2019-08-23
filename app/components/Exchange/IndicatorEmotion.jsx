@@ -63,8 +63,8 @@ class IndicatorGaugeChart extends React.Component {
     value = this.state.value;
 
     return (
-        <div className="grid-content no-overflow no-padding middle-content" style={{}}>
-            <div style={{ width: '300px',height: '180px'}}>
+        <div className="grid-content no-overflow no-padding middle-content" style={{ position: 'relative', marginBottom: '0px', marginTop: '20px'}}>
+            <div style={{ width: '150px',height: '100px'}}>
                 <ReactSpeedometer
                   fluidWidth
             		  minValue={minValue}

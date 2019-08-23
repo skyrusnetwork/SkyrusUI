@@ -31,6 +31,12 @@ import AccountBrowsingMode from "../Account/AccountBrowsingMode";
 import {setLocalStorageType, isPersistantType} from "lib/common/localStorage";
 import ScreensaverModal from "../Modal/ScreensaverModal";
 import HeaderSmall from "../Layout/HeaderSmall";
+import ButtonsGroup from "../Layout/ButtonsGroup";
+import Button1 from '../../assets/pngs/icon_bt1.png';
+import Button11 from '../../assets/pngs/icon_bt11.png';
+import Button12 from '../../assets/pngs/icon_bt12.png';
+import Button13 from '../../assets/pngs/icon_bt13.png';
+
 import fire from "../firebase";
 const database = fire.database();
 
@@ -459,7 +465,7 @@ class Header extends React.Component {
             />
             <div className="text account-name" style={{display: 'flex', marginRight: 20, justifyContent: 'center', alignItems: 'center'}} onClick={() => {this._toggleAccountDropdownMenu();}}>
                 <span>
-                    {this.state.user === null || this.state.user.userName === null ? "" : this.state.user.userName || this.state.user.id}
+                    {this.state.user === null ? "" : (this.state.user.userName !== null && this.state.user.userName !== undefined && this.state.user.userName !== 'undefined' ? this.state.user.userName : this.state.user.id )}
                 </span>
                 <AccountBrowsingMode
                     location={this.props.location}
@@ -478,7 +484,7 @@ class Header extends React.Component {
             />
             <div className="text account-name" style={{display: 'flex', marginRight: 20, justifyContent: 'center', alignItems: 'center'}} onClick={() => {this._toggleAccountDropdownMenu();}}>
                 <span>
-                    {this.state.user === null || this.state.user.avatarName === null ? "" : this.state.user.avatarName || this.state.user.id}
+                  {this.state.user === null ? "" : (this.state.user.avatarName !== null && this.state.user.avatarName !== undefined && this.state.user.avatarName !== 'undefined' ? this.state.user.avatarName : this.state.user.id )}
                 </span>
                 <AccountBrowsingMode
                     location={this.props.location}
@@ -513,7 +519,7 @@ class Header extends React.Component {
             !!a &&
             Apis.instance() &&
             Apis.instance().chain_id &&
-            Apis.instance().chain_id.substr(0, 8) === "a04fa179";
+            Apis.instance().chain_id.substr(0, 8) === "2843a40a";
 
         if (starredAccounts.size) {
             for (let i = tradingAccounts.length - 1; i >= 0; i--) {
@@ -1047,31 +1053,20 @@ class Header extends React.Component {
         let smallScreen = window.innerWidth < 1200 ? true : false;
         let tinyScreen = window.innerWidth < 640 ? true : false;
         if(!tinyScreen) {
-          if(this.state.leftPanelContent=="market"){
-            leftHeader = (
-              <div style={{width: "100%",margin: 0, padding: 5, textAlign: "left", width: 377}}>
-                <div className = "circle-button active" style = {{marginRight: 10}} title={"Market"}></div>
-                <div className = "circle-button" style = {{marginRight: 10}} title={"News"} onClick={this._setLeftPanel.bind(this, "liveFeed")}></div>
-                <div className = "circle-button" style = {{marginRight: 10}} title={"Dashboard"} onClick={this._setLeftPanel.bind(this, "dashboard")}></div>
-              </div>
-            );
-          }else if(this.state.leftPanelContent=="liveFeed") {
-            leftHeader = (
-              <div style={{width: "100%",margin: 0, padding: 5, textAlign: "left", width: 377}}>
-                <div className = "circle-button" style = {{marginRight: 10}} title={"Market"} onClick={this._setLeftPanel.bind(this, "market")}></div>
-                <div className = "circle-button active" style = {{marginRight: 10}} title={"News"}></div>
-                <div className = "circle-button" style = {{marginRight: 10}} title={"Dashboard"} onClick={this._setLeftPanel.bind(this, "dashboard")}></div>
-              </div>
-            );
-          }else{
-            leftHeader = (
-              <div style={{width: "100%",margin: 0, padding: 5, textAlign: "left", width: 377}}>
-                <div className = "circle-button" style = {{marginRight: 10}} title={"Market"} onClick={this._setLeftPanel.bind(this, "market")}></div>
-                <div className = "circle-button" style = {{marginRight: 10}} title={"News"} onClick={this._setLeftPanel.bind(this, "liveFeed")}></div>
-                <div className = "circle-button active" style = {{marginRight: 10}} title={"Dashbord"}></div>
-              </div>
-            );
-          }
+          leftHeader = (
+            <ButtonsGroup
+              title1={counterpart.translate("account.bts_market")}
+              title2={counterpart.translate("icons.news")}
+              title3={counterpart.translate("header.dashboard")}
+              button1={Button1}
+              button2={Button11}
+              button3={Button12}
+              button4={Button13}
+              onClickButton1={this._setLeftPanel.bind(this, "market")}
+              onClickButton2={() => {}}
+              onClickButton3={this._setLeftPanel.bind(this, "dashboard")}
+              />
+          );
         }
 
         let accountMenu = [];
@@ -1400,8 +1395,8 @@ class Header extends React.Component {
                                 name={this.props.locked ? "locked" : "unlocked"}
                                 title={
                                     this.props.locked
-                                        ? "icons.locked.common"
-                                        : "icons.unlocked.common"
+                                        ? counterpart.translate("icons.locked.common")
+                                        : counterpart.translate("icons.unlocked.common")
                                 }
                             />
                         </span>
@@ -1417,7 +1412,7 @@ class Header extends React.Component {
                                 className="lock-unlock"
                                 size="1_5x"
                                 name={"server"}
-                                title={"screensaver"}
+                                title={counterpart.translate("header.screensaver")}
                             />
                         </span>
                     }
@@ -1468,7 +1463,9 @@ class Header extends React.Component {
           topMenuContainer = (
             <div
               style={tinyScreen? {borderBottom:"1px solid #333333", position: 'absolute', left: 0, right: 0, bottom: 0, height: 40, alignItems: 'center', justifyContent: 'center', backgroundColor: '#191a1f', borderTopColor: '#6d6d6d', borderTopWidth: 1} : {borderBottom:"1px solid #333333", position: 'absolute', left: 0, right: 0, bottom: 0, height: 40, backgroundColor: '#191a1f', borderTopColor: '#6d6d6d', borderTopWidth: 1, display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-              {leftHeader}
+              <div style={{width: "100%",margin: 0, padding: 5, textAlign: "left", width: 377}}>
+                {leftHeader}
+              </div>
               <HeaderSmall
                 height={"20px"}
                 title={window.location.href.split("/").length - 1 == 3 ? "Dashboard" : this.props.centerContent}
@@ -1732,8 +1729,8 @@ class Header extends React.Component {
                                 name={this.props.locked ? "locked" : "unlocked"}
                                 title={
                                     this.props.locked
-                                        ? "icons.locked.common"
-                                        : "icons.unlocked.common"
+                                        ? counterpart.translate("icons.locked.common")
+                                        : counterpart.translate("icons.unlocked.common")
                                 }
                             />
                         </span>
@@ -1749,7 +1746,7 @@ class Header extends React.Component {
                                 className="lock-unlock"
                                 size="1_5x"
                                 name={"server"}
-                                title={"screensaver"}
+                                title={counterpart.translate("header.screensaver")}
                             />
                         </span>
                     }
@@ -1797,14 +1794,14 @@ class Header extends React.Component {
             </div>
           );
         }
-
+        let headerImg = require("assets/pngs/Skyrus.png");
         return (
             <div style={{position: 'relative'}}>
               <div
                 className="header-container"
                 style={topMenuContainer == null?
-                  {height: "0px", borderBottom:"0px solid #333333", opacity:"0.7"}
-                  : {height: "85px", borderBottom:"1px solid #333333", opacity:"0.7"}}
+                  {height: "0px", borderBottom:"0px solid #333333", opacity:"0"}
+                  : {height: "110px", borderBottom:"1px solid #333333", opacity:"0"}}
               >
                   <SendModal
                       id="send_modal_header"
@@ -1838,6 +1835,9 @@ class Header extends React.Component {
                       modalId="withdraw_modal_new"
                       backedCoins={this.props.backedCoins}
                   />
+              </div>
+              <div style={{position: 'absolute', left: 0, right: 0, bottom: 58, textAlign: 'center'}}>
+                <img src={headerImg} style={{height: 32}}/>
               </div>
               {topMenuContainer}
             </div>

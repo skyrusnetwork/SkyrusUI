@@ -5,6 +5,7 @@ import Icon from "../Icon/Icon";
 import fire from "../firebase";
 import FileUploader from "react-firebase-file-uploader";
 import {Select, Row, Col, Button, Modal} from "bitshares-ui-style-guide";
+import counterpart from "counterpart";
 import {Notification} from "bitshares-ui-style-guide";
 const database = fire.database();
 const storage = fire.storage();
@@ -130,14 +131,6 @@ class Post extends React.Component {
     invitesRef.on('value', snapshot => {
       const groupInvites = snapshot.val();
       this.setState({groupInvites: groupInvites});
-      if(groupInvites !== null && groupInvites !== undefined) {
-        Object.keys(groupInvites).map((key) => {
-          let invite = groupInvites[key];
-          if(user.id === invite.userId && invite.status == "accepted") {
-            this.addGroup(invite.from, invite.key);
-          }
-        });
-      }
     });
   }
 
@@ -172,16 +165,19 @@ class Post extends React.Component {
     let defaultAvatar = require("assets/icons/default-avatar.png");
     Object.keys(this.state.users).map(key => {
       let user = this.state.users[key];
+      if(user == null || user == undefined) {
+        return;
+      }
       user.id = key;
       if(user.id !== this.state.user.id && this.isContact(user)) {
         userViews.push(
-          <div style={{marginBottom:"20px", cursor: "pointer"}} key={key} onClick={() => {this.toggleFriend(user);}}>
-            <div style={{marginBottom:"5px", display: 'flex'}}>
+          <div style={{marginBottom:"10px", cursor: "pointer"}} key={key} onClick={() => {this.toggleFriend(user);}}>
+            <div style={{display: 'flex'}}>
               <img
                 src={user.userImage == null || user.userImage == undefined || user.userImage == '' ? defaultAvatar : user.userImage}
                 style={{borderRadius:"50%", border: "none", width: "20px", height: "20px", backgroundColor: "#777777", marginRight:"3px"}}
               />
-              <span style={{color: "#777777",  marginRight:"20px", flex: 1, display: 'flex', alignItems: 'center'}}>
+            <span className="three-dot" style={{color: "#777777"}}>
                 {user.id}
               </span>
               <span style={{color: "#999999",  flex: 1, display: 'flex', alignItems: 'center'}}>
@@ -228,9 +224,9 @@ class Post extends React.Component {
       let group = this.state.groups[key];
       group.key = key;
       groupViews.push(
-        <div key={key} style={{cursor: 'pointer', marginVertical: 3}}
+        <div key={key} key={key} style={{marginBottom:"10px", cursor: 'pointer', marginVertical: 3}}
         onClick={() => {this.toggleGroup(group)}}>
-          <span style={{color: "#777777",  marginRight:"20px"}}>
+          <span className="three-dot" style={{overflow: 'hidden', color: "#777777",  marginRight:"20px"}}>
             {group.name}
           </span>
           <span style={{color: "#999999"}}>
@@ -478,7 +474,7 @@ class Post extends React.Component {
       return(
         <div>
           <h2>
-            Post Preview
+            {counterpart.translate("community.postPreview")}
           </h2>
           <img src={this.state.imagePreviewUrl} style={{width: 250}} />
           <textarea
@@ -492,7 +488,7 @@ class Post extends React.Component {
       return(
         <div>
           <h2>
-            Post Preview
+            {counterpart.translate("community.postPreview")}
           </h2>
           <video width="400" controls>
             <source src={this.state.videoPreviewUrl}/>
@@ -508,7 +504,7 @@ class Post extends React.Component {
       return(
         <div>
           <h2>
-            Post Preview
+            {counterpart.translate("community.postPreview")}
           </h2>
           <audio width="400" controls>
             <source src={this.state.audioPreviewUrl}/>
@@ -539,7 +535,7 @@ class Post extends React.Component {
             style={{borderRadius:"50%", border: "none", width: "50px", height: "50px", backgroundColor: "#777777", marginRight:"3px"}}
           />
           <div style={{marginTop: 15}}>
-            Name
+            {counterpart.translate("community.name")}
           </div>
           <div style={{marginTop: 15}}>
             {this.state.user === null || this.state.user.userName === null ? "" : this.state.user.userName}
@@ -555,7 +551,7 @@ class Post extends React.Component {
             style={{borderRadius:"50%", border: "none", width: "50px", height: "50px", backgroundColor: "#777777", marginRight:"3px"}}
           />
           <div style={{marginTop: 15}}>
-            Name
+            {counterpart.translate("community.name")}
           </div>
           <div style={{marginTop: 15}}>
             {this.state.user === null || this.state.user.avatarName === null ? "" : this.state.user.avatarName}
@@ -578,13 +574,13 @@ class Post extends React.Component {
           }
         });
         if(userNum == 0){
-          return "Friend";
+          return counterpart.translate("community.friend");
         }else{
-          return userNum.toString()+" Friends";
+          return userNum.toString() + " " + counterpart.translate("community.friends");
         }
       }
       else{
-        return "Friend";
+        return counterpart.translate("community.friend");
       }
     }
     if(type == "group"){
@@ -598,13 +594,13 @@ class Post extends React.Component {
           }
         });
         if(groupNum == 0){
-          return "Group";
+          return counterpart.translate("community.group");
         }else{
-          return groupNum.toString()+" Groups";
+          return groupNum.toString() + " " + counterpart.translate("community.groups");
         }
       }
       else{
-        return "Group";
+        return counterpart.translate("community.group");
       }
     }
   }
@@ -688,7 +684,7 @@ class Post extends React.Component {
                 this.post();
               }}
               >
-                post
+                {counterpart.translate("community.post")}
             </button>
           </div>
         </div>
@@ -696,15 +692,15 @@ class Post extends React.Component {
           <Popup
             on={'click'}
             position={['bottom left']}
-            offsetX={-170}
+            offsetX={-230}
             offsetY={120}
             closeOnDocumentClick
             mouseLeaveDelay={100}
             mouseEnterDelay={0}
-            contentStyle={{ width: 200, padding: '10px', border: 'none', backgroundColor: "#2d2e37", borderRadius: 3, height: 200}}
+            contentStyle={{ width: 220, padding: '10px', border: 'none', backgroundColor: "#2d2e37", borderRadius: 3, height: 200}}
             arrow={false}
             trigger={
-              <span style={{width: 170, borderRadius: 5, color: '#FFFFFF', borderColor: '#2d2e37', backgroundColor: '#2d2e37', display:"flex",alignItems:"center"}}>
+              <span style={{width: 230, borderRadius: 5, color: '#FFFFFF', borderColor: '#2d2e37', backgroundColor: '#2d2e37', display:"flex",alignItems:"center"}}>
                 <span style={{marginLeft: 20, marginRight: 10, cursor:"pointer"}}>
                   {'\u{1F5F9}   ' + this.getMenuLabel("friend")}
                 </span>
@@ -722,15 +718,15 @@ class Post extends React.Component {
           <Popup
             on={'click'}
             position={['bottom left']}
-            offsetX={-170}
+            offsetX={-230}
             offsetY={120}
             closeOnDocumentClick
             mouseLeaveDelay={100}
             mouseEnterDelay={0}
-            contentStyle={{ width: 200, padding: '10px', border: 'none', backgroundColor: "#2d2e37", borderRadius: 3, height: 200}}
+            contentStyle={{ width: 220, padding: '10px', border: 'none', backgroundColor: "#2d2e37", borderRadius: 3, height: 200}}
             arrow={false}
             trigger={
-              <span style={{width: 170, borderRadius: 5, color: '#FFFFFF', borderColor: '#2d2e37', backgroundColor: '#2d2e37', display:"flex", alignItems:"center"}}>
+              <span style={{width: 230, borderRadius: 5, color: '#FFFFFF', borderColor: '#2d2e37', backgroundColor: '#2d2e37', display:"flex", alignItems:"center"}}>
                 <span style={{marginRight: 10, cursor:"pointer"}}>
                   {'\u{1F5F9}   ' + this.getMenuLabel("group")}
                 </span>
@@ -753,14 +749,14 @@ class Post extends React.Component {
                     key="submit"
                     type="primary"
                     onClick={() => {this.uploadFile();}}>
-                    POST
+                    {counterpart.translate("community.post")}
                 </Button>,
                 <Button
                     key="cancel"
                     style={{marginLeft: "8px"}}
                     onClick={() => {this.hideModal();}}
                 >
-                    CANCEL
+                    {counterpart.translate("community.cancel")}
                 </Button>
             ]}
             visible={this.state.videoPreviewUrl !== null || this.state.imagePreviewUrl !== null || this.state.audioPreviewUrl !== null}

@@ -17,6 +17,7 @@ import {Asset, Price, LimitOrderCreate} from "common/MarketClasses";
 import {checkFeeStatusAsync} from "common/trxHelper";
 import utils from "common/utils";
 import BuySell from "./BuySell";
+import BuySellMarket from "./BuySellMarket";
 import ExchangeHeader from "./ExchangeHeader";
 import {MyOpenOrders} from "./MyOpenOrders";
 import {OrderBook} from "./OrderBook";
@@ -44,7 +45,7 @@ import Posts from "../Community/Posts";
 import Community from "../Community/Community";
 import LiveFeed from "./LiveFeed";
 import IndicatorGaugeChart from "./IndicatorGaugeChart";
-import IndicatorEmotion from "./IndicatorEmotion";
+import IndicatorTechnicalBox from "./IndicatorTechnicalBox";
 import AccountWallet from "../../components/Account/AccountWallet";
 import AccountStore from "stores/AccountStore";
 import {connect} from "alt-react";
@@ -788,7 +789,8 @@ class Exchange extends React.Component {
             this.setState(this._initialState(nextProps));
 
             let _this = this;
-            var promise = this._getMarketHistory(nextProps.quoteAsset,nextProps.baseAsset,3600*4,101);
+            var promise = this._getMarketHistory(nextProps.baseAsset.get("id"),nextProps.quoteAsset.get("id"),3600*4,200);
+            //var promise = this._getMarketHistory(nextProps.quoteAsset.get("symbol"),nextProps.baseAsset.get("symbol"),3600*4,101);
             promise.then(function(value){
               _this.setState({
                   marketHistory: value
@@ -1897,7 +1899,7 @@ class Exchange extends React.Component {
         });
     }
 
-    _getMarketHistory(quote, base, bucketCount, limit) {
+    _getMarketHistory(base_id, quote_id, bucketCount, limit) {
       let startDate = new Date();
       let endDate = new Date();
 
@@ -1911,8 +1913,8 @@ class Exchange extends React.Component {
           Apis.instance()
               .history_api()
               .exec("get_market_history", [
-                  quote.get("id"),
-                  base.get("id"),
+                  quote_id,
+                  base_id,
                   bucketCount,
                   startDate.toISOString().slice(0, -5),
                   endDate.toISOString().slice(0, -5)
@@ -2115,7 +2117,7 @@ class Exchange extends React.Component {
          */
         let actionCardIndex = 0;
 
-        let buyForm = isFrozen ? null : tinyScreen &&
+        let buyLimitForm = isFrozen ? null : tinyScreen &&
         !this.state.mobileKey.includes("buySellTab") ? null : (
             <BuySell
                 key={`actionCard_${actionCardIndex++}`}
@@ -2222,7 +2224,114 @@ class Exchange extends React.Component {
             />
         );
 
-        let sellForm = isFrozen ? null : tinyScreen &&
+        let buyMarketForm = isFrozen ? null : tinyScreen &&
+        !this.state.mobileKey.includes("buySellTab") ? null : (
+            <BuySellMarket
+                key={`actionCard_${actionCardIndex++}`}
+                onBorrow={baseIsBitAsset ? this._borrowBase.bind(this) : null}
+                onBuy={this._onBuy.bind(this, "bid")}
+                onDeposit={this._onDeposit.bind(this, "bid")}
+                currentAccount={currentAccount}
+                backedCoin={this.props.backedCoins.find(
+                    a => a.symbol === base.get("symbol")
+                )}
+                currentBridges={
+                    this.props.bridgeCoins.get(base.get("symbol")) || null
+                }
+                isOpen={this.state.buySellOpen}
+                onToggleOpen={this._toggleOpenBuySell.bind(this)}
+                parentWidth={centerContainerWidth}
+                styles={{padding: 5, paddingRight: mirrorPanels ? 15 : 5}}
+                className={cnames(
+                    verticalOrderForm && !smallScreen
+                        ? ""
+                        : centerContainerWidth > 1200
+                            ? ""
+                            : centerContainerWidth > 800
+                                ? ""
+                                : "",
+                    "small-12 no-padding middle-content",
+                    flipBuySell
+                        ? `order-${buySellTop ? 2 : 3} large-order-${
+                              buySellTop ? 2 : 5
+                          } sell-form`
+                        : `order-${buySellTop ? 1 : 2} large-order-${
+                              buySellTop ? 1 : 4
+                          } buy-form`
+                )}
+                type="bid"
+                hideHeader={
+                    tinyScreen || (!smallScreen && verticalOrderForm)
+                        ? true
+                        : false
+                }
+                expirationType={expirationType["bid"]}
+                expirations={this.EXPIRATIONS}
+                expirationCustomTime={expirationCustomTime["bid"]}
+                onExpirationTypeChange={this._handleExpirationChange.bind(
+                    this,
+                    "bid"
+                )}
+                onExpirationCustomChange={this._handleCustomExpirationChange.bind(
+                    this,
+                    "bid"
+                )}
+                amount={bid.toReceiveText}
+                price={bid.priceText}
+                total={bid.forSaleText}
+                quote={quote}
+                base={base}
+                amountChange={this._onInputReceive.bind(this, "bid", true)}
+                priceChange={this._onInputPrice.bind(this, "bid")}
+                setPrice={this._currentPriceClick.bind(this)}
+                totalChange={this._onInputSell.bind(this, "bid", false)}
+                clearForm={this._clearForms.bind(this, "bid")}
+                balance={baseBalance}
+                balanceId={base.get("id")}
+                onSubmit={this._createLimitOrderConfirm.bind(
+                    this,
+                    quote,
+                    base,
+                    baseBalance,
+                    coreBalance,
+                    buyFeeAsset,
+                    "buy"
+                )}
+                balancePrecision={base.get("precision")}
+                quotePrecision={quote.get("precision")}
+                totalPrecision={base.get("precision")}
+                currentPrice={lowestAsk.getPrice()}
+                currentPriceObject={lowestAsk}
+                account={currentAccount.get("name")}
+                fee={buyFee}
+                hasFeeBalance={this.state.feeStatus[buyFee.asset_id].hasBalance}
+                feeAssets={buyFeeAssets}
+                feeAsset={buyFeeAsset}
+                onChangeFeeAsset={this.onChangeFeeAsset.bind(this, "buy")}
+                isPredictionMarket={base.getIn([
+                    "bitasset",
+                    "is_prediction_market"
+                ])}
+                onFlip={!flipBuySell ? this._flipBuySell.bind(this) : null}
+                onTogglePosition={
+                    this.state.buySellTop && !verticalOrderBook
+                        ? this._toggleBuySellPosition.bind(this)
+                        : null
+                }
+                moveOrderForm={
+                    !smallScreen && (!flipBuySell || verticalOrderForm)
+                        ? this._moveOrderForm.bind(this)
+                        : null
+                }
+                verticalOrderForm={!smallScreen ? verticalOrderForm : false}
+                isPanelActive={isPanelActive}
+                activePanels={activePanels}
+                singleColumnOrderForm={singleColumnOrderForm}
+                hideFunctionButtons={hideFunctionButtons}
+            />
+        );
+
+        let sellLimitForm = isFrozen ? null : tinyScreen &&
         !this.state.mobileKey.includes("buySellTab") ? null : (
             <BuySell
                 key={`actionCard_${actionCardIndex++}`}
@@ -2330,6 +2439,116 @@ class Exchange extends React.Component {
                 hideFunctionButtons={hideFunctionButtons}
             />
         );
+
+        let sellMarketForm = isFrozen ? null : tinyScreen &&
+        !this.state.mobileKey.includes("buySellTab") ? null : (
+            <BuySellMarket
+                key={`actionCard_${actionCardIndex++}`}
+                onBorrow={quoteIsBitAsset ? this._borrowQuote.bind(this) : null}
+                onBuy={this._onBuy.bind(this, "ask")}
+                onDeposit={this._onDeposit.bind(this, "ask")}
+                currentAccount={currentAccount}
+                backedCoin={this.props.backedCoins.find(
+                    a => a.symbol === quote.get("symbol")
+                )}
+                currentBridges={
+                    this.props.bridgeCoins.get(quote.get("symbol")) || null
+                }
+                isOpen={this.state.buySellOpen}
+                onToggleOpen={this._toggleOpenBuySell.bind(this)}
+                parentWidth={centerContainerWidth}
+                styles={{padding: 5, paddingRight: mirrorPanels ? 15 : 5}}
+                className={cnames(
+                    verticalOrderForm && !smallScreen
+                        ? ""
+                        : centerContainerWidth > 1200
+                            ? ""
+                            : centerContainerWidth > 800
+                                ? ""
+                                : "",
+                    "small-12 no-padding middle-content",
+                    flipBuySell
+                        ? `order-${buySellTop ? 1 : 2} large-order-${
+                              buySellTop ? 1 : 4
+                          } buy-form`
+                        : `order-${buySellTop ? 2 : 3} large-order-${
+                              buySellTop ? 2 : 5
+                          } sell-form`
+                )}
+                type="ask"
+                hideHeader={
+                    tinyScreen || (!smallScreen && verticalOrderForm)
+                        ? true
+                        : false
+                }
+                amount={ask.forSaleText}
+                price={ask.priceText}
+                total={ask.toReceiveText}
+                quote={quote}
+                base={base}
+                expirationType={expirationType["ask"]}
+                expirations={this.EXPIRATIONS}
+                expirationCustomTime={expirationCustomTime["ask"]}
+                onExpirationTypeChange={this._handleExpirationChange.bind(
+                    this,
+                    "ask"
+                )}
+                onExpirationCustomChange={this._handleCustomExpirationChange.bind(
+                    this,
+                    "ask"
+                )}
+                amountChange={this._onInputSell.bind(this, "ask", false)}
+                priceChange={this._onInputPrice.bind(this, "ask")}
+                setPrice={this._currentPriceClick.bind(this)}
+                totalChange={this._onInputReceive.bind(this, "ask", true)}
+                clearForm={this._clearForms.bind(this, "ask")}
+                balance={quoteBalance}
+                balanceId={quote.get("id")}
+                onSubmit={this._createLimitOrderConfirm.bind(
+                    this,
+                    base,
+                    quote,
+                    quoteBalance,
+                    coreBalance,
+                    sellFeeAsset,
+                    "sell"
+                )}
+                balancePrecision={quote.get("precision")}
+                quotePrecision={quote.get("precision")}
+                totalPrecision={base.get("precision")}
+                currentPrice={highestBid.getPrice()}
+                currentPriceObject={highestBid}
+                account={currentAccount.get("name")}
+                fee={sellFee}
+                hasFeeBalance={
+                    this.state.feeStatus[sellFee.asset_id].hasBalance
+                }
+                feeAssets={sellFeeAssets}
+                feeAsset={sellFeeAsset}
+                onChangeFeeAsset={this.onChangeFeeAsset.bind(this, "sell")}
+                isPredictionMarket={quote.getIn([
+                    "bitasset",
+                    "is_prediction_market"
+                ])}
+                onFlip={flipBuySell ? this._flipBuySell.bind(this) : null}
+                onTogglePosition={
+                    this.state.buySellTop && !verticalOrderBook
+                        ? this._toggleBuySellPosition.bind(this)
+                        : null
+                }
+                moveOrderForm={
+                    !smallScreen && (flipBuySell || verticalOrderForm)
+                        ? this._moveOrderForm.bind(this)
+                        : null
+                }
+                verticalOrderForm={!smallScreen ? verticalOrderForm : false}
+                isPanelActive={isPanelActive}
+                activePanels={activePanels}
+                singleColumnOrderForm={singleColumnOrderForm}
+                hideFunctionButtons={hideFunctionButtons}
+            />
+        );
+
 
         let exchangeHeader =
           (<ExchangeHeader
@@ -2715,7 +2934,7 @@ class Exchange extends React.Component {
                         }
                         key="buy"
                     >
-                        {buyForm}
+                        {buyLimitForm}
                     </Tabs.TabPane>
                     <Tabs.TabPane
                         tab={
@@ -2741,7 +2960,7 @@ class Exchange extends React.Component {
                         }
                         key="sell"
                     >
-                        {sellForm}
+                        {sellLimitForm}
                     </Tabs.TabPane>
                 </Tabs>
             </div>
@@ -2927,7 +3146,68 @@ class Exchange extends React.Component {
                   className = {"market-layout"}
                   footer={null}
                 >
-                  {buyForm}
+                    <Tabs
+                        defaultActiveKey="buy"
+                        activeKey={tabBuySell}
+                        onChange={this._setTabBuySell.bind(this)}
+                        style={{
+                            padding: "0px !important",
+                            margin: "0px !important"
+                        }}
+                    >
+                        <Tabs.TabPane
+                            tab={
+                                <TranslateWithLinks
+                                    string="exchange.limit_order"
+                                    noLink
+                                    noTip={false}
+                                    keys={[
+                                        {
+                                            type: "asset",
+                                            value: quote.get("symbol"),
+                                            arg: "asset"
+                                        },
+                                        {
+                                            type: "translate",
+                                            value: isPredictionMarket
+                                                ? "exchange.short"
+                                                : "exchange.buy",
+                                            arg: "direction"
+                                        }
+                                    ]}
+                                />
+                            }
+                            key="buy"
+                        >
+                            {buyLimitForm}
+                        </Tabs.TabPane>
+                        <Tabs.TabPane
+                            tab={
+                                <TranslateWithLinks
+                                    string="exchange.market_order"
+                                    noLink
+                                    noTip={false}
+                                    keys={[
+                                        {
+                                            type: "asset",
+                                            value: quote.get("symbol"),
+                                            arg: "asset"
+                                        },
+                                        {
+                                            type: "translate",
+                                            value: isPredictionMarket
+                                                ? "exchange.short"
+                                                : "exchange.sell",
+                                            arg: "direction"
+                                        }
+                                    ]}
+                                />
+                            }
+                            key="sell"
+                        >
+                            {buyMarketForm}
+                        </Tabs.TabPane>
+                    </Tabs>
                 </Modal>
 
                 <Modal
@@ -2940,13 +3220,74 @@ class Exchange extends React.Component {
                   className = {"market-layout"}
                   footer={null}
                 >
-                  {sellForm}
+                    <Tabs
+                        defaultActiveKey="buy"
+                        activeKey={tabBuySell}
+                        onChange={this._setTabBuySell.bind(this)}
+                        style={{
+                            padding: "0px !important",
+                            margin: "0px !important"
+                        }}
+                    >
+                        <Tabs.TabPane
+                            tab={
+                                <TranslateWithLinks
+                                    string="exchange.limit_order"
+                                    noLink
+                                    noTip={false}
+                                    keys={[
+                                        {
+                                            type: "asset",
+                                            value: quote.get("symbol"),
+                                            arg: "asset"
+                                        },
+                                        {
+                                            type: "translate",
+                                            value: isPredictionMarket
+                                                ? "exchange.short"
+                                                : "exchange.buy",
+                                            arg: "direction"
+                                        }
+                                    ]}
+                                />
+                            }
+                            key="buy"
+                        >
+                            {sellLimitForm}
+                        </Tabs.TabPane>
+                        <Tabs.TabPane
+                            tab={
+                                <TranslateWithLinks
+                                    string="exchange.market_order"
+                                    noLink
+                                    noTip={false}
+                                    keys={[
+                                        {
+                                            type: "asset",
+                                            value: quote.get("symbol"),
+                                            arg: "asset"
+                                        },
+                                        {
+                                            type: "translate",
+                                            value: isPredictionMarket
+                                                ? "exchange.short"
+                                                : "exchange.sell",
+                                            arg: "direction"
+                                        }
+                                    ]}
+                                />
+                            }
+                            key="sell"
+                        >
+                            {sellMarketForm}
+                        </Tabs.TabPane>
+                    </Tabs>
                 </Modal>
               </div>
             );
         } else if (!tinyScreen) {
-            actionCards.push(buyForm);
-            actionCards.push(sellForm);
+            actionCards.push(buyLimitForm);
+            actionCards.push(sellLimitForm);
             actionCards.push(orderBook);
             actionCards.push(groupStandalone);
             actionCards.push(groupTabbed1);
@@ -3070,7 +3411,7 @@ class Exchange extends React.Component {
                   <div
                       className="left-order-book no-padding no-overflow ps-container"
                       ref="leftPanel"
-                      style={{display: "block"}}
+                      style={{display: "block", position: 'relative'}}
                       key={`actionCard_${actionCardIndex++}`}
                   >
                       {exchangeHeader}
@@ -3087,7 +3428,7 @@ class Exchange extends React.Component {
                                 className="left-order-book no-padding no-overflow"
                                 style={{
                                     display: "block",
-                                    height: "calc(50vh - 170px)",
+                                    height: "calc(50vh - 100px)",
                                     width: panelWidth
                                 }}
                             >
@@ -3102,7 +3443,7 @@ class Exchange extends React.Component {
                                 className="left-order-book no-padding no-overflow"
                                 style={{
                                     display: "block",
-                                    height: "calc(50vh - 170px)",
+                                    height: "calc(50vh - 100px)",
                                     width: panelWidth
                                 }}
                             >
@@ -3181,7 +3522,7 @@ class Exchange extends React.Component {
                   <div
                       className="left-order-book no-padding no-overflow ps-container"
                       ref="leftPanel"
-                      style={{display: "block", width: !smallScreen ? 378 : "auto"}}
+                      style={{display: "block", width: !smallScreen ? 378 : "auto", position: 'relative'}}
                       key={`actionCard_${actionCardIndex++}`}
                   >
                     <LiveFeed/>
@@ -3192,7 +3533,7 @@ class Exchange extends React.Component {
                   <div
                       className="left-order-book no-padding no-overflow ps-container"
                       ref="leftPanel"
-                      style={{display: "block"}}
+                      style={{display: "block", position: 'relative'}}
                       key={`actionCard_${actionCardIndex++}`}
                   >
                   </div>
@@ -3321,14 +3662,14 @@ class Exchange extends React.Component {
                           }}
                       >
                         <div style={{width: '100%', height: '33.3%', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                          <div style={{flex: 0.5, alignItems: 'center', justifyContent: 'center'}} onClick={this._setIndicator.bind(this, "RSI")}>
+                          <div style={{}} onClick={this._setIndicator.bind(this, "RSI")}>
                             <IndicatorGaugeChart
                               marketHistory = {this.state.marketHistory}
                               indicator={"RSI"}
                             />
                             <h5>RSI</h5>
                           </div>
-                          <div style={{flex: 0.5, alignItems: 'center', justifyContent: 'center'}} onClick={this._setIndicator.bind(this, "MA")}>
+                          <div style={{}} onClick={this._setIndicator.bind(this, "MA")}>
                             <IndicatorGaugeChart
                               marketHistory = {this.state.marketHistory}
                               indicator={"MO"}
@@ -3337,14 +3678,14 @@ class Exchange extends React.Component {
                           </div>
                         </div>
                         <div style={{width: '100%', height: '33.3%', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                          <div style={{flex: 0.5, alignItems: 'center', justifyContent: 'center'}} onClick={this._setIndicator.bind(this, "BB")}>
+                          <div style={{}} onClick={this._setIndicator.bind(this, "BB")}>
                             <IndicatorGaugeChart
                               marketHistory = {this.state.marketHistory}
                               indicator={"BB"}
                             />
                             <h5>BB</h5>
                           </div>
-                          <div style={{flex: 0.5, alignItems: 'center', justifyContent: 'center'}} onClick={this._setIndicator.bind(this, "MACD")}>
+                          <div style={{}} onClick={this._setIndicator.bind(this, "MACD")}>
                             <IndicatorGaugeChart
                               marketHistory = {this.state.marketHistory}
                               indicator={"MACD"}
@@ -3353,14 +3694,14 @@ class Exchange extends React.Component {
                           </div>
                         </div>
                         <div style={{width: '100%', height: '33.3%', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                          <div style={{flex: 0.5, alignItems: 'center', justifyContent: 'center'}} onClick={this._setIndicator.bind(this, "KO")}>
+                          <div style={{}} onClick={this._setIndicator.bind(this, "KO")}>
                             <IndicatorGaugeChart
                               marketHistory = {this.state.marketHistory}
                               indicator={"KO"}
                             />
                             <h5>KO</h5>
                           </div>
-                          <div style={{flex: 0.5, alignItems: 'center', justifyContent: 'center'}} onClick={this._setIndicator.bind(this, "OBV")}>
+                          <div style={{}} onClick={this._setIndicator.bind(this, "OBV")}>
                             <IndicatorGaugeChart
                               marketHistory = {this.state.marketHistory}
                               indicator={"OBV"}
@@ -3391,14 +3732,7 @@ class Exchange extends React.Component {
                               flexDirection: 'column'
                           }}
                       >
-                        <div style={{width: '100%', height: '50%', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
-                          <div style={{alignItems: 'center', justifyContent: 'center'}}>
-                            <IndicatorEmotion
-                              indicator={"EMO"}
-                            />
-                            <h5>Emotion Indicator</h5>
-                          </div>
-                        </div>
+                        <IndicatorTechnicalBox/>
                       </div>
                   </div>
               );

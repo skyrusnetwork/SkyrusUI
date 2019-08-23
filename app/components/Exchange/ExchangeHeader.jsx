@@ -33,7 +33,8 @@ export default class ExchangeHeader extends React.Component {
           'SKYRUS.BTC':'bitcoin',
           'SKYRUS.ETH':'ethereum',
           'SKYRUS.LTC':'litecoin',
-          'SKYRUS.BCH':'bitcoin-cash'
+          'SKYRUS.BCH':'bitcoin-cash',
+          'SKYRUS.USDT':'tether'
         };
         if(symbollist[quote_symbol]){
           if(symbollist[quote_symbol]!='SKX'){

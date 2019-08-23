@@ -125,15 +125,15 @@ class SettingsStore {
         return {
             locale: [
                 "en",
-                //"zh",
-                //"fr",
-                //"ko",
-                //"de",
-                //"es",
-                //"it",
-                //"tr",
-                //"ru",
-                //"ja"
+                "zh",
+                "fr",
+                "ko",
+                "de",
+                "es",
+                "it",
+                "tr",
+                "ru",
+                "ja"
             ],
             apiServer: settingsAPIs.WS_NODE_LIST.slice(0), // clone all default servers as configured in apiConfig.js
             unit: getUnits(this._getChainId()),
@@ -416,7 +416,7 @@ class SettingsStore {
             this.basesKey = this._getChainKey("preferredBases");
             // Default markets setup
             let topMarkets = {
-                markets_a04fa179: getMyMarketsQuotes(),
+                markets_2843a40a: getMyMarketsQuotes(),
                 markets_39f5e2ed: [
                     // TESTNET
                     "PEG.FAKEUSD",
@@ -425,7 +425,7 @@ class SettingsStore {
             };
 
             let bases = {
-                markets_a04fa179: getMyMarketsBases(),
+                markets_2843a40a: getMyMarketsBases(),
                 markets_39f5e2ed: [
                     // TESTNET
                     "TEST"
@@ -433,7 +433,7 @@ class SettingsStore {
             };
 
             let coreAssets = {
-                markets_a04fa179: "SKX",
+                markets_2843a40a: "SKX",
                 markets_39f5e2ed: "TEST"
             };
             let coreAsset = coreAssets[this.starredKey] || "SKX";
@@ -444,7 +444,7 @@ class SettingsStore {
             this.onUpdateUnits();
             this.defaults.unit[0] = coreAsset;
 
-            let defaultBases = bases[this.starredKey] || bases.markets_a04fa179;
+            let defaultBases = bases[this.starredKey] || bases.markets_2843a40a;
             let storedBases = ss.get(this.basesKey, []);
             this.preferredBases = Immutable.List(
                 storedBases.length ? storedBases : defaultBases
@@ -665,7 +665,7 @@ class SettingsStore {
 
     _getChainId() {
         //return (Apis.instance().chain_id || "4018d784").substr(0, 8);
-        return (Apis.instance().chain_id || "a04fa179").substr(0, 8);
+        return (Apis.instance().chain_id || "2843a40a").substr(0, 8);
     }
 
     _getChainKey(key) {

@@ -87,14 +87,7 @@ class OrderBookRowVertical extends React.Component {
                     {"my-order": order.isMine(this.props.currentAccount)}
                 )}
             >
-                <div className="cell left">
-                    {utils.format_number(
-                        order[
-                            isBid ? "amountForSale" : "amountToReceive"
-                        ]().getAmount({real: true}),
-                        base.get("precision")
-                    )}
-                </div>
+                <div className={`cell ${integerClass} right`}>{price}</div>
                 <div className="cell">
                     {utils.format_number(
                         order[
@@ -103,7 +96,14 @@ class OrderBookRowVertical extends React.Component {
                         quote.get("precision")
                     )}
                 </div>
-                <div className={`cell ${integerClass} right`}>{price}</div>
+                <div className="cell left">
+                    {utils.format_number(
+                        order[
+                            isBid ? "amountForSale" : "amountToReceive"
+                        ]().getAmount({real: true}),
+                        base.get("precision")
+                    )}
+                </div>
             </div>
         );
     }
@@ -1215,22 +1215,23 @@ class OrderBook extends React.Component {
                         ref={this.verticalStickyTable}
                     >
                         <div className="sticky-table-row top-header">
-                            <div className="cell header-cell left">
-                                <span className="header-sub-title">
-                                    <AssetName name={baseSymbol} />
-                                </span>
-                            </div>
-                            <div className="cell header-cell">
-                                <span className="header-sub-title">
-                                    <AssetName name={quoteSymbol} />
-                                </span>
-                            </div>
+
                             <div className="cell header-cell right">
                                 <Translate
                                     className="header-sub-title"
                                     content="exchange.price"
                                 />
                             </div>
+                            <div className="cell header-cell">
+                                <span className="header-sub-title">
+                                    <AssetName name={quoteSymbol} />
+                                </span>
+                            </div>
+                            <div className="cell header-cell left">
+                                <span className="header-sub-title">
+                                    <AssetName name={baseSymbol} />
+                                </span>
+                            </div>                           
                         </div>
                         {orderBookReversed ? (
                             <OrderRows
@@ -1264,22 +1265,35 @@ class OrderBook extends React.Component {
                                     <div className="orderbook-latest-price">
                                         <div>
                                             <div className="text-center spread">
-                                                <span
-                                                    className="clickable left"
-                                                    onClick={
-                                                        this.toggleSpreadValue
-                                                    }
-                                                >
-                                                    <Translate
-                                                        className="orderbook-center-title"
-                                                        content="exchange.spread"
-                                                    />{" "}
-                                                    <span className="spread-value">
-                                                        {!!spread
-                                                            ? spread
-                                                            : "0"}
+                                                {!!this.props.latest && (
+                                                    <span className="left" style={{fontSize: "16px", fontWeight: 600}}>
+                                                        <span
+                                                            className={
+                                                                !this.props
+                                                                    .changeClass
+                                                                    ? "spread-value"
+                                                                    : this.props
+                                                                          .changeClass
+                                                            }
+                                                        >
+                                                            <PriceText
+                                                                price={
+                                                                    this.props
+                                                                        .latest
+                                                                }
+                                                                base={
+                                                                    this.props
+                                                                        .base
+                                                                }
+                                                                quote={
+                                                                    this.props
+                                                                        .quote
+                                                                }
+                                                            />
+                                                        </span>
                                                     </span>
-                                                </span>
+                                                )}
+
                                                 <span style={{width: 75}}>
                                                     {!this.props
                                                         .hideFunctionButtons ? (
@@ -1342,34 +1356,22 @@ class OrderBook extends React.Component {
                                                         />
                                                     )}
                                                 </span>
-                                                {!!this.props.latest && (
-                                                    <span className="right">
-                                                        <span
-                                                            className={
-                                                                !this.props
-                                                                    .changeClass
-                                                                    ? "spread-value"
-                                                                    : this.props
-                                                                          .changeClass
-                                                            }
-                                                        >
-                                                            <PriceText
-                                                                price={
-                                                                    this.props
-                                                                        .latest
-                                                                }
-                                                                base={
-                                                                    this.props
-                                                                        .base
-                                                                }
-                                                                quote={
-                                                                    this.props
-                                                                        .quote
-                                                                }
-                                                            />
-                                                        </span>
+                                                <span
+                                                    className="clickable right"
+                                                    onClick={
+                                                        this.toggleSpreadValue
+                                                    }
+                                                >
+                                                    <Translate
+                                                        className="orderbook-center-title"
+                                                        content="exchange.spread"
+                                                    />{" "}
+                                                    <span className="spread-value">
+                                                        {!!spread
+                                                            ? spread
+                                                            : "0"}
                                                     </span>
-                                                )}
+                                                </span>
                                             </div>
                                         </div>
                                     </div>

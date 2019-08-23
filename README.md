@@ -23,8 +23,8 @@ nvm use v9
 Once you have Node installed, you can clone the repo:
 
 ```
-git clone https://github.com/skyrus/skyrus-ui.git
-cd skyrus-ui
+git clone https://github.com/skyrusnetwork/SkyrusUI.git
+cd SkyrusUI
 ```
 
 Before launching the GUI you will need to install the npm packages:

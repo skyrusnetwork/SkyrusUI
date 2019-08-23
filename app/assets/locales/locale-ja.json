@@ -209,7 +209,7 @@
         "total_value": "合計額",
         "trade": "トレード",
         "transactions": {
-            "fee": "Fee",
+            "fee": "費用",
             "id": "ID",
             "info": "情報",
             "time": "時間",
@@ -510,11 +510,13 @@
         "invalid_price": "価格が不正です",
         "invert": "価格を反転",
         "latest": "最新",
+        "limit_order": "指値注文",
         "lowest_ask": "最低アスク価格",
         "maintenance": "維持コール価格",
         "market": "マーケット",
         "market_frozen": "%(asset)s のオーナーがこのマーケットでの取引を無効にしています。",
         "market_name": "マイ・マーケット",
+        "market_order": "成行注文",
         "market_picker": {
             "filter_by_issuer": "Filter by issuer",
             "find_by_asset": "Find by asset",
@@ -587,8 +589,8 @@
                 "chart_zoom": "Allow Zoom",
                 "hide_function_buttons": "Hide function buttons",
                 "market_location": "Market location",
-                "market_trades": "Market Trades",
-                "my_trades": "My Trades",
+                "market_trades": "市場取引",
+                "my_trades": "私の取引",
                 "open_orders": "Open Orders",
                 "order_book_grouping": "Order Book Grouping",
                 "order_style": "Style",
@@ -633,7 +635,7 @@
         "show_all_trades": "Show all %(rowcount)s trades",
         "show_asks": "すべての売り注文を見る",
         "show_bids": "すべての買い注文を見る",
-        "show_only_liquid": "Show liquid markets only",
+        "show_only_liquid": "流動的な市場のみを表示",
         "show_only_star_formatter": "{star_icon}のみ表示",
         "sma": "単純移動平均",
         "spread": "スプレッド",
@@ -889,7 +891,8 @@
             "rudex": "",
             "trade": "<br/><br/>%(asset)sアセットは実際の%(backed)sと1：1に対応し、Blocktradesによって提供されるゲートウェイサービスによって入出金が可能です。",
             "win": "",
-            "xbts": ""
+            "xbts": "",
+            "skyrus": "SKX"
         },
         "balance": "現在の残高",
         "balance_asset": "現在の%(asset)s残高",
@@ -1057,7 +1060,11 @@
         "unlock_short": "ログイン",
         "unlocked_tip": "<br/>クリックすると、ウォレットをロックしログアウトします。<br/><br/>ブラウザを閉じることでもログアウトできます。",
         "update_asset": "アセット更新",
-        "withdraw_legacy": "or Legacy Withdraw"
+        "withdraw_legacy": "or Legacy Withdraw",
+        "community": "コミュニティ",
+        "investment": "投資",
+        "screensaver": "スクリーンセーバー",
+        "chainFinancing": "チェーンファイナンス"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -1091,7 +1098,7 @@
         },
         "dashboard": "Dashboard",
         "deposit": {
-            "deposit": "Deposit",
+            "deposit": "預り金",
             "deposit_withdraw": "Deposit/Withdraw"
         },
         "disconnected": "API Node is disconnected",
@@ -1110,7 +1117,7 @@
             "sort_accounts": "Sort by favorites",
             "symbol": "Add/remove symbol from favorites"
         },
-        "filter": "Filter",
+        "filter": "フィルタ",
         "folder": "Accounts",
         "hamburger": "Open menu",
         "hamburger_x": "Close menu",
@@ -1119,8 +1126,8 @@
         "key": "Key",
         "list": "Whitelist",
         "locked": {
-            "action": "Click to unlock your account to perform this action",
-            "common": "Click to unlock your account",
+            "action": "クリックしてアカウントのロックを解除し、このアクションを実行します",
+            "common": "クリックしてアカウントのロックを解除します",
             "enable_auto_scroll": "Enable auto scroll"
         },
         "manage_accounts": "Manage Accounts",
@@ -1158,7 +1165,7 @@
         },
         "transfer": "Send",
         "unlocked": {
-            "common": "Click to lock your account",
+            "common": "クリックしてアカウントをロックします",
             "disable_auto_scroll": "Disable auto scroll"
         },
         "user": {
@@ -1167,7 +1174,7 @@
             "following": "You are following this user"
         },
         "warning": "Permissions",
-        "withdraw": "Withdraw",
+        "withdraw": "撤回",
         "zoom": "Search"
     },
     "incognito": {
@@ -1195,7 +1202,24 @@
         "selectDifferent": "Select different file",
         "supportWarning": "Warning! You browser doesn't support some some file operations required to restore backup, we recommend you to use Chrome or Firefox browsers to restore your backup.",
         "title": "Select Login Type",
-        "withoutBinFile": "I don't have .bin-file"
+        "withoutBinFile": "I don't have .bin-file",
+        "pdfWhitepaper": "PDF Whitepaper",
+        "buyIco": "ICOを購入する",
+        "whitepaper": "白書",
+        "fillThePower": "ハイブリッドエクスチェンジの力を感じる",
+        "theFastest": "最速の分散型で最も安全な集中型の交換",
+        "joinUs": "参加して違いを体験してください",
+        "paperMoney": "紙幣",
+        "termsOfUse": "利用規約",
+        "privacyPolicy": "個人情報保護方針",
+        "cookiePolicy": "クッキーポリシー",
+        "referralDescription": "友人1人あたり5ドルを獲得するには、AirDropキャンペーンで（1）+（2）+（3）を完了した後、友人にユーザー名、電報、TwitterのURL、国、およびユーザー名を記入するように依頼してください。 すべてのIPアドレスが記録されます。",
+        "myUsername": "新しいアカウントのユーザー名",
+        "myTelegram": "私の電報",
+        "myTwitter": "私のTwitterのURL",
+        "CountryResidence": "居住国",
+        "myReferralUsername": "紹介者のユーザー名",
+        "submit": "提出する"
     },
     "markets": {
         "base": "ベースアセット",
@@ -2115,5 +2139,45 @@
             "finalNumber": "Actual amount ：%(final_number)s",
             "winAmount": "Minimum amount: %(min_amount)s %(asset)s"
         }
+    },
+    "community": {
+      "chatPlaceholder": "ここにメッセージを入力してください",
+      "profile": "プロフィール",
+      "message": "メッセージ",
+      "post": "役職",
+      "notification": "お知らせ",
+      "name": "名",
+      "contact": "接触",
+      "invite": "招待する",
+      "follower": "フォロワー",
+      "following": "以下",
+      "likes": "いいね",
+      "group": "グループ",
+      "create": "作成する",
+      "invites": "招待",
+      "sent": "送信済み",
+      "accepted": "受け入れられた",
+      "contacts": "連絡先",
+      "delete": "削除する",
+      "cancel": "キャンセル",
+      "groupInfo": "グループ情報",
+      "save": "保存する",
+      "groups": "グループ",
+      "avatarName": "アバター名",
+      "createGroup": "グループを作成",
+      "enterGroupName": "グループ名を入力",
+      "enterGroupDescription": "グループの説明を入力",
+      "enterDescription": "説明を入力してください",
+      "enterUserName": "ユーザー名を入力してください",
+      "EnterAvatarName": "アバター名を入力",
+      "welcomeMessage": "会話へようこそ！",
+      "tapContact": "連絡先をタップして会話を開始します。",
+      "friend": "ともだち",
+      "friends": "友だち",
+      "postPreview": "投稿プレビュー",
+      "follow": "フォロー",
+      "howCanI": "どんな御用でしょうか？あなたの懸念についてお気軽にご連絡ください。",
+      "welcome": "ようこそ！",
+      "skyrusLiveChat": "Skyrusライブチャット"
     }
 }

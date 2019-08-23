@@ -3,6 +3,7 @@ import Icon from "../Icon/Icon";
 import Translate from "react-translate-component";
 import cnames from "classnames";
 import AccountActions from "actions/AccountActions";
+import {Notification} from "bitshares-ui-style-guide";
 
 export default class HeaderDropdown extends React.Component {
     shouldComponentUpdate(np) {
@@ -20,6 +21,15 @@ export default class HeaderDropdown extends React.Component {
 
     _onRemoveContact() {
         AccountActions.removeAccountContact(this.props.currentAccount);
+    }
+
+    openBuyIco() {
+      Notification.info({
+          message: "This will activate on 23 AUG 2019, 0800HRS (GMT+8) in landing page"
+      });
+      return;
+      var win = window.open('https://smartwallet.skyrus.io', '_blank');
+      win.focus();
     }
 
     render() {
@@ -218,7 +228,7 @@ export default class HeaderDropdown extends React.Component {
                             title: "icons.deposit.deposit"
                         },
                         disabled: !enableDepositWithdraw,
-                        mainText: "modal.deposit.submit",
+                        mainText: "icons.deposit.deposit",
                         mainCallback: this.props.showDeposit,
                         //subText: "header.deposit_legacy",
                         //subURL: "/deposit-withdraw"
@@ -229,7 +239,7 @@ export default class HeaderDropdown extends React.Component {
                             title: "icons.withdraw"
                         },
                         disabled: !enableDepositWithdraw,
-                        mainText: "modal.withdraw.submit",
+                        mainText: "icons.withdraw",
                         mainCallback: this.props.showWithdraw,
                         //subText: "header.withdraw_legacy",
                         //subURL: "/deposit-withdraw"
@@ -534,6 +544,21 @@ export default class HeaderDropdown extends React.Component {
                         </div>
                     </li>
                 ) : null}
+
+
+                <li
+                    className={cnames({
+                        active: true
+                    })}
+                    onClick={() => {this.openBuyIco();}}
+                >
+                    <div className="table-cell">
+                        <Icon size="2x" name="ic-buy" title="Buy ICO" />
+                    </div>
+                    <div className="table-cell">
+                        Buy ICO
+                    </div>
+                </li>
             </ul>
         );
     }

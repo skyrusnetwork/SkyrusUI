@@ -3,6 +3,7 @@ import Ps from "perfect-scrollbar";
 import colors from "assets/colors";
 import Icon from "../Icon/Icon";
 import fire from "../firebase";
+import counterpart from "counterpart";
 import FileUploader from "react-firebase-file-uploader";
 const database = fire.database();
 const storage = fire.storage();
@@ -114,7 +115,7 @@ class Message extends React.Component {
 
   onAddMessage(event) {
     event.preventDefault();
-    if(this.state.user == null) {
+    if(this.state.user == null || !this.input.value) {
       return;
     }
     let name, image, id;
@@ -184,6 +185,9 @@ class Message extends React.Component {
     let defaultAvatar = require("assets/icons/default-avatar.png");
     Object.keys(this.state.users).map(key => {
       let user = this.state.users[key];
+      if(user == null || user == undefined) {
+        return;
+      }
       user.id = key;
       if(user.id !== this.state.user.id && this.isContact(user)) {
         if(this.state.selectedUser !== null && user.id === this.state.selectedUser.id) {
@@ -225,10 +229,10 @@ class Message extends React.Component {
       return(
         <div>
           <h2>
-            Welcome to conversation!
+            {counterpart.translate("community.welcomeMessage")}
           </h2>
           <h4>
-            Tap Contact to start conversation.
+            {counterpart.translate("community.tapContact")}
           </h4>
         </div>
       );
@@ -246,6 +250,7 @@ class Message extends React.Component {
   renderMessages() {
     let keys = [];
     let messages = [];
+    let defaultAvatar = require("assets/icons/default-avatar.png");
     this.state.messages.map(message => {
       if(keys.indexOf(message.id) === -1) {
         keys.push(message.id);
@@ -288,7 +293,7 @@ class Message extends React.Component {
     return(
       <form style={{height: 50}} onSubmit={this.onAddMessage}>
         <input
-          type="text" ref={node => this.input = node} placeholder="Type a message here"
+          type="text" ref={node => this.input = node} placeholder={counterpart.translate("community.chatPlaceholder")}
           style={{border:"1px solid #555555"}}
           disabled={
               !this.props.currentAccount || this.props.currentAccount === "1.2.3"
@@ -319,7 +324,7 @@ class Message extends React.Component {
           {this.renderContacts()}
         </div>
         <div style={{width: "100%", height: '100%', display: 'flex', flexDirection: 'column', flex: 1, paddingRight: 5, paddingLeft: 5}}>
-          <div style={{width: "100%", height: '100%', display: 'flex', flexDirection: 'column', flex: 1, paddingRight: 5, paddingLeft: 5, alignItems: 'center', justifyContent: 'center'}} ref="privateChatScroll">
+          <div style={{width: "100%", height: '100%', display: 'flex', flexDirection: 'column', flex: 1, paddingRight: 5, paddingLeft: 5, alignItems: 'center', justifyContent: 'center', position: 'relative'}} ref="privateChatScroll">
             {this.renderChatContent()}
           </div>
           {this.renderMessageInput()}

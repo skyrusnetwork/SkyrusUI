@@ -62,7 +62,8 @@ let icons = [
     "trash",
     "drop-down",
     "icon-facebook",
-    "ic-home"
+    "ic-home",
+    "ic-buy"
 ];
 
 let iconsMap = {};

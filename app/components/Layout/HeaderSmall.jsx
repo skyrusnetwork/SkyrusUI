@@ -31,6 +31,12 @@ import AccountBrowsingMode from "../Account/AccountBrowsingMode";
 import {setLocalStorageType, isPersistantType} from "lib/common/localStorage";
 import ScreensaverModal from "../Modal/ScreensaverModal";
 
+import BackgroundChain from '../../assets/pngs/icon_chain_finanacing.png';
+import BackgroundCommunity from '../../assets/pngs/icon_community.png';
+import BackgroundExchange from '../../assets/pngs/icon_exchange.png';
+import BackgroundGreen from '../../assets/pngs/icon_green.png';
+import BackgroundWallet from '../../assets/pngs/icon_wallet.png';
+
 import {getLogo} from "branding";
 var logo = getLogo();
 
@@ -201,7 +207,7 @@ class Header extends React.Component {
         if(e) {
             e.preventDefault();
         }
-        if(page === "Investment") {
+        if(page === "chainFinancing") {
           return;
         }
         // Set Accounts Tab as active tab
@@ -334,6 +340,42 @@ class Header extends React.Component {
         }
     }
 
+    renderTitle(title) {
+      if(window.innerWidth <= 1199) {
+        return;
+      }
+      switch (title) {
+        case "Dashboard":
+          return(
+            <li><div style={{color:"#888888", fontSize:"30px",paddingTop:"1px", zIndex: 9}}><Translate content="header.dashboard" /></div></li>
+          );
+          break;
+        case "Exchange":
+          return(
+            <li><div style={{color:"#888888", fontSize:"30px",paddingTop:"1px", zIndex: 9}}><Translate content="header.exchange" /></div></li>
+          );
+          break;
+        case "Wallet":
+          return(
+            <li><div style={{color:"#888888", fontSize:"30px",paddingTop:"1px", zIndex: 9}}><Translate content="wallet.title" /></div></li>
+          );
+          break;
+        case "chainFinancing":
+          return(
+            <li><div style={{color:"#888888", fontSize:"30px",paddingTop:"1px", zIndex: 9}}><Translate content="header.chainFinancing" /></div></li>
+          );
+          break;
+        case "Community":
+          return(
+            <li><div style={{color:"#888888", fontSize:"30px",paddingTop:"1px", zIndex: 9}}><Translate content="header.community" /></div></li>
+          );
+          break;
+        default:
+
+      }
+
+    }
+
     render() {
         let {active} = this.state;
         let {
@@ -357,7 +399,7 @@ class Header extends React.Component {
             !!a &&
             Apis.instance() &&
             Apis.instance().chain_id &&
-            Apis.instance().chain_id.substr(0, 8) === "a04fa179";
+            Apis.instance().chain_id.substr(0, 8) === "2843a40a";
 
         if (starredAccounts.size) {
             for (let i = tradingAccounts.length - 1; i >= 0; i--) {
@@ -438,18 +480,16 @@ class Header extends React.Component {
         return (
             <div
               className="header-small-container"
-              style={{minHeight: "30px", height:"30px !important", flex: 1}}
+              style={{minHeight: "30px", height:"30px !important", flex: 1, position: 'relative'}}
             >
-                <div>
+                <div style={{width: '100%', position: 'absolute'}}>
                     <div
                         className="header menu-group primary"
-                        style={{flexWrap: "nowrap", justifyContent: "right", background:"none"}}
+                        style={{flexWrap: "nowrap", justifyContent: "center", background:"none"}}
                     >
                         <ul className="menu-bar" style={{background:"none"}}>
-                            <li>{dashboard}</li>
-                            {window.innerWidth > 1199 ? (
-                                <li><div style={{color:"#888888", fontSize:"17px",paddingTop:"1px"}}>{this.props.title}</div></li>
-                            ) : null}
+                            {/*<li>{dashboard}</li>*/}
+                            {this.renderTitle(this.props.title)}
                         </ul>
                     </div>
                 </div>
@@ -458,23 +498,53 @@ class Header extends React.Component {
                     style={{cursor: "pointer"}}
                 >
                 </div>
-                <div>
+                <div style={{zIndex: 2}}>
                     <a
                         style={{flexFlow: "row"}}
-                        title={"Exchange"}
+                        title={counterpart.translate("header.exchange")}
                         onClick={this._onNavigate.bind(
                             this,
                             tradeUrl,
                             "Exchange"
                         )}
                     >
-                        <div style={{width:"25px", height:"10px", backgroundColor:"#aaaaaa", borderRadius:"2px", marginRight:"10px"}}>
+                        <div
+                          style={{
+                            width: 30,
+                            height: 15,
+                            marginLeft: 10,
+                            backgroundImage: "url(" + BackgroundExchange + ")",
+                            backgroundPosition: 'center',
+                            backgroundSize: 'cover',
+                            backgroundRepeat: 'no-repeat'}}>
                         </div>
                     </a>
                 </div>
-                <div>
+                <div style={{zIndex: 2}}>
+                    <a
+                        style={{flexFlow: "row"}}
+                        title={counterpart.translate("header.chainFinancing")}
+                        onClick={this._onNavigate.bind(
+                            this,
+                            tradeUrl,
+                            "chainFinancing"
+                        )}
+                    >
+                    <div
+                      style={{
+                        width: 30,
+                        height: 15,
+                        marginLeft: 10,
+                        backgroundImage: "url(" + BackgroundChain + ")",
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat'}}>
+                    </div>
+                    </a>
+                </div>
+                <div style={{zIndex: 2}}>
                     {this.props.currentAccount == null ? null : (
-                        <div
+                        <a
                             style={{flexFlow: "row"}}
                             onClick={this._onNavigate.bind(
                                 this,
@@ -505,39 +575,57 @@ class Header extends React.Component {
                                         "/permissions"
                                     ) === -1
                             })}
-                            title={"Wallet"}
+                            title={counterpart.translate("wallet.title")}
                         >
-                            <div style={{width:"25px", height:"10px", backgroundColor:"#ff5555", borderRadius:"2px", marginRight:"10px", cursor: 'pointer'}}>
-                            </div>
+                        <div
+                          style={{
+                            width: 30,
+                            height: 15,
+                            marginLeft: 10,
+                            backgroundImage: "url(" + BackgroundWallet + ")",
+                            backgroundPosition: 'center',
+                            backgroundSize: 'cover',
+                            backgroundRepeat: 'no-repeat'}}>
                         </div>
+                      </a>
                     )}
                 </div>
-                <div>
+                <div style={{zIndex: 2}}>
                     <a
                         style={{flexFlow: "row"}}
-                        title={"Investment"}
-                        onClick={this._onNavigate.bind(
-                            this,
-                            tradeUrl,
-                            "Investment"
-                        )}
-                    >
-                        <div style={{width:"25px", height:"10px", backgroundColor:"#2d7a2c", borderRadius:"2px", marginRight:"10px"}}>
-                        </div>
-                    </a>
-                </div>
-                <div>
-                    <a
-                        style={{flexFlow: "row"}}
-                        title={"Community"}
+                        title={counterpart.translate("header.community")}
                         onClick={this._onNavigate.bind(
                             this,
                             tradeUrl,
                             "Community"
                         )}
                     >
-                        <div style={{width:"25px", height:"10px", backgroundColor:"#ed9231", borderRadius:"2px", marginRight:"15px"}}>
-                        </div>
+                    <div
+                      style={{
+                        width: 30,
+                        height: 15,
+                        marginLeft: 10,
+                        backgroundImage: "url(" + BackgroundCommunity + ")",
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat'}}>
+                    </div>
+                    </a>
+                </div>
+                <div style={{zIndex: 2}}>
+                    <a
+                        style={{flexFlow: "row"}}
+                    >
+                    <div
+                      style={{
+                        width: 30,
+                        height: 15,
+                        marginLeft: 10,
+                        backgroundImage: "url(" + BackgroundGreen + ")",
+                        backgroundPosition: 'center',
+                        backgroundSize: 'cover',
+                        backgroundRepeat: 'no-repeat'}}>
+                    </div>
                     </a>
                 </div>
             </div>

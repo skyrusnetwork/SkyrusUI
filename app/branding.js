@@ -27,7 +27,7 @@ export function getWalletURL() {
  */
 export function getFaucet() {
     return {
-        url: "http://testnet.skyrus.io", // 2017-12-infrastructure worker proposal
+        url: "https://seed1.skyrus.io", // 2017-12-infrastructure worker proposal
         show: true,
         editable: false
     };
@@ -69,9 +69,9 @@ export function getDefaultLogin() {
 //         return ["BTS", "USD", "CNY", "BTC", "EUR", "GBP"];
 //     else if (chainId === "39f5e2ed") return ["TEST"];
 // }
- export function getUnits(chainId = "a04fa179") {
-     if (chainId === "a04fa179")
-         return ["BTC", "ETH", "LTC", "BCH", "SKX"];
+ export function getUnits(chainId = "2843a40a") {
+     if (chainId === "2843a40a")
+         return ["BTC", "ETH", "LTC", "BCH", "USDT", "SKX"];
      else if (chainId === "39f5e2ed") return ["TEST"];
  }
 
@@ -82,7 +82,7 @@ export function getDefaultLogin() {
  */
 
 export function getMyMarketsBases() {
-    return ["BTC","ETH", "LTC", "BCH", "SKX"];
+    return ["BTC","ETH", "LTC", "BCH", "USDT", "SKX"];
 }
 
 /**
@@ -103,7 +103,7 @@ export function getMyMarketsQuotes() {
             "SILVER",
             "USD"
         ],
-        skyrusTokens:["SKYRUS.BTC","SKYRUS.ETH","SKYRUS.LTC","SKYRUS.BCH"],
+        skyrusTokens:["SKYRUS.BTC","SKYRUS.ETH","SKYRUS.LTC","SKYRUS.BCH","SKYRUS.USDT"],
         /*
         bridgeTokens: ["BRIDGE.BCO", "BRIDGE.BTC", "BRIDGE.MONA", "BRIDGE.ZNY"],
         gdexTokens: ["GDEX.BTC", "GDEX.BTO", "GDEX.EOS", "GDEX.ETH"],

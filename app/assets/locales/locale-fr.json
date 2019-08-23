@@ -38,7 +38,7 @@
         "filter_orders": "Filter",
         "follow": "Ajouter le contact",
         "hidden_accounts_row": "Hidden Accounts",
-        "hide_hidden": "Active",
+        "hide_hidden": "Actif",
         "hide_ignored": "Hide hidden accounts",
         "history": "Historique",
         "history_error": "Failed to download the account history, please try again",
@@ -101,9 +101,9 @@
             "premium_name_warning": "This is a premium name which is more expensive than a name containing a dash (-) or a number."
         },
         "new_user": "New user?",
-        "no_orders": "No open orders",
+        "no_orders": "Pas de commandes en cours",
         "no_price": "--",
-        "open_orders": "Open Orders",
+        "open_orders": "Commandes ouvertes",
         "optional": {
             "formatter": "Optionally, {restore_link} or create an account using the {restore_form}.",
             "restore_form": "advanced form",
@@ -179,7 +179,7 @@
         "see_open": "See open orders",
         "select_placeholder": "Selectionnez un compte..",
         "settle": "Settle",
-        "show_hidden": "Hidden",
+        "show_hidden": "Cachée",
         "show_ignored": "Show hidden accounts",
         "show_visual": "Visual",
         "signedmessages": {
@@ -209,10 +209,10 @@
         "total_value": "Total value",
         "trade": "Trade",
         "transactions": {
-            "fee": "Fee",
+            "fee": "Frais",
             "id": "ID",
             "info": "Info",
-            "time": "Time",
+            "time": "Temps",
             "type": "Type"
         },
         "transfer_actions": "Transfer actions",
@@ -461,13 +461,13 @@
         }
     },
     "dashboard": {
-        "featured_markets": "Featured Markets",
-        "starred_markets": "Starred Markets",
-        "table_empty": "No market matched",
-        "top_markets": "Top Markets"
+        "featured_markets": "Marchés en vedette",
+        "starred_markets": "Marchés étoilés",
+        "table_empty": "Aucun marché ne correspond",
+        "top_markets": "Meilleurs marchés"
     },
     "exchange": {
-        "add_quote": "Add",
+        "add_quote": "Ajouter",
         "asks": "Sell orders",
         "atr": "Average True Range",
         "balance": "Solde",
@@ -498,23 +498,25 @@
         "ema": "Exponential Moving Average",
         "featured": "Top Markets",
         "feed_price": "Feed Price",
-        "filter": "Filter...",
+        "filter": "Filtre...",
         "flip": "Flip",
         "group_order_limit": "Groupe",
-        "hide": "Hide",
+        "hide": "cacher",
         "highest_bid": "Demande le plus haut",
-        "history": "Market trades",
+        "history": "Métiers du marché",
         "horizontal": "Horizontal",
         "index": "Index",
         "invalid_amount": "Invalid amount",
         "invalid_price": "Invalid price",
         "invert": "Invert the price",
         "latest": "Dernier Prix",
+        "limit_order": "Limité Ordre",
         "lowest_ask": "Offre le plus bas",
         "maintenance": "Maintenance Call Price",
-        "market": "Market",
+        "market": "Marché",
         "market_frozen": "The owner of %(asset)s has disabled trading in this market.",
-        "market_name": "My Markets",
+        "market_name": "Mes marchés",
+        "market_order": "Marché Ordre",
         "market_picker": {
             "filter_by_issuer": "Filter by issuer",
             "find_by_asset": "Find by asset",
@@ -532,8 +534,8 @@
         "move_up": "Move up",
         "my_asks": "My asks",
         "my_bids": "My bids",
-        "my_history": "My trades",
-        "my_orders": "My open orders",
+        "my_history": "Mes métiers",
+        "my_orders": "Mes commandes ouvertes",
         "native": "Native",
         "new": "New",
         "no_asks": "No asks",
@@ -541,7 +543,7 @@
         "no_bids": "No bids",
         "no_data": "No data",
         "no_orders": "No orders",
-        "order_book": "Order Book",
+        "order_book": "Carnet de commande",
         "order_depth": "Carnet d'ordres",
         "order_grouping": "Order Grouping %(orderlimit)s%",
         "others": "Others",
@@ -587,8 +589,8 @@
                 "chart_zoom": "Allow Zoom",
                 "hide_function_buttons": "Hide function buttons",
                 "market_location": "Market location",
-                "market_trades": "Market Trades",
-                "my_trades": "My Trades",
+                "market_trades": "Métiers du marché",
+                "my_trades": "Mes métiers",
                 "open_orders": "Open Orders",
                 "order_book_grouping": "Order Book Grouping",
                 "order_style": "Style",
@@ -629,12 +631,12 @@
         "settle": "Settlement",
         "settle_orders": "Settle orders",
         "short": "Short",
-        "show_all_orders": "Show all %(rowcount)s orders",
-        "show_all_trades": "Show all %(rowcount)s trades",
+        "show_all_orders": "Afficher toutes les commandes %(rowcount)s",
+        "show_all_trades": "Afficher tous les trades %(rowcount)s",
         "show_asks": "Show all asks",
         "show_bids": "Show all bids",
-        "show_only_liquid": "Show liquid markets only",
-        "show_only_star_formatter": "Show {star_icon} only",
+        "show_only_liquid": "Afficher uniquement les marchés liquides",
+        "show_only_star_formatter": "Afficher uniquement {star_icon}",
         "sma": "Simple Moving Average",
         "spread": "Spread",
         "squeeze": "Margin Call Price",
@@ -889,7 +891,8 @@
             "rudex": "",
             "trade": "<br/><br/>The %(asset)s asset is backed 1:1 by real %(backed)s and can be deposited or withdrawn using the gateway service provided by Blocktrades.",
             "win": "",
-            "xbts": ""
+            "xbts": "",
+            "skyrus": "SKX"
         },
         "balance": "Balance",
         "balance_asset": "Current %(asset)s balance",
@@ -1057,7 +1060,11 @@
         "unlock_short": "Login",
         "unlocked_tip": "<br/>Click to log out.<br/><br/>Closing the browser window will also log you out.",
         "update_asset": "Update Asset",
-        "withdraw_legacy": "or Legacy Withdraw"
+        "withdraw_legacy": "or Legacy Withdraw",
+        "community": "Communauté",
+        "investment": "Investissement",
+        "screensaver": "Économiseur d'écran",
+        "chainFinancing": "Financement en chaîne"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -1091,7 +1098,7 @@
         },
         "dashboard": "Dashboard",
         "deposit": {
-            "deposit": "Deposit",
+            "deposit": "Dépôt",
             "deposit_withdraw": "Deposit/Withdraw"
         },
         "disconnected": "API Node is disconnected",
@@ -1110,7 +1117,7 @@
             "sort_accounts": "Sort by favorites",
             "symbol": "Add/remove symbol from favorites"
         },
-        "filter": "Filter",
+        "filter": "Filtre",
         "folder": "Accounts",
         "hamburger": "Open menu",
         "hamburger_x": "Close menu",
@@ -1119,8 +1126,8 @@
         "key": "Key",
         "list": "Whitelist",
         "locked": {
-            "action": "Click to unlock your account to perform this action",
-            "common": "Click to unlock your account",
+            "action": "Cliquez pour déverrouiller votre compte pour effectuer cette action",
+            "common": "Cliquez pour déverrouiller votre compte",
             "enable_auto_scroll": "Enable auto scroll"
         },
         "manage_accounts": "Manage Accounts",
@@ -1158,7 +1165,7 @@
         },
         "transfer": "Send",
         "unlocked": {
-            "common": "Click to lock your account",
+            "common": "Cliquez pour verrouiller votre compte",
             "disable_auto_scroll": "Disable auto scroll"
         },
         "user": {
@@ -1167,7 +1174,7 @@
             "following": "You are following this user"
         },
         "warning": "Permissions",
-        "withdraw": "Withdraw",
+        "withdraw": "Se désister",
         "zoom": "Search"
     },
     "incognito": {
@@ -1195,7 +1202,24 @@
         "selectDifferent": "Select different file",
         "supportWarning": "Warning! You browser doesn't support some some file operations required to restore backup, we recommend you to use Chrome or Firefox browsers to restore your backup.",
         "title": "Select Login Type",
-        "withoutBinFile": "I don't have .bin-file"
+        "withoutBinFile": "I don't have .bin-file",
+        "pdfWhitepaper": "Livre blanc PDF",
+        "buyIco": "ACHETEZ ICO",
+        "whitepaper": "PAPIER BLANC",
+        "fillThePower": "Ressentez la puissance d'un échange hybride",
+        "theFastest": "Le plus rapide des échanges décentralisés et le plus sécurisé des échanges centralisés",
+        "joinUs": "Rejoignez-nous et vivez la différence",
+        "paperMoney": "Billet d'argent",
+        "termsOfUse": "Conditions d'utilisation",
+        "privacyPolicy": "Politique de confidentialité",
+        "cookiePolicy": "Politique de cookie",
+        "referralDescription": "Pour gagner vos 5 dollars par ami, demandez à vos amis de saisir leur nom d'utilisateur, leur télégramme, leur URL Twitter, leur pays et votre nom d'utilisateur ci-dessous après avoir terminé (1) + (2) + (3) dans la campagne AirDrop. Toutes les adresses IP sont enregistrées.",
+        "myUsername": "Mon nom d'utilisateur dans le nouveau compte",
+        "myTelegram": "Mon télégramme",
+        "myTwitter": "Mon URL Twitter",
+        "CountryResidence": "Pays de résidence",
+        "myReferralUsername": "Nom d'utilisateur de ma référence",
+        "submit": "Soumettre"
     },
     "markets": {
         "base": "Base asset",
@@ -2114,6 +2138,46 @@
         "withdraw": {
             "finalNumber": "Actual amount ：%(final_number)s",
             "winAmount": "Minimum amount: %(min_amount)s %(asset)s"
+        },
+        "community": {
+          "chatPlaceholder": "Tapez un message ici",
+          "profile": "Profil",
+          "message": "Message",
+          "post": "Poster",
+          "notification": "Notification",
+          "name": "prénom",
+          "contact": "Contact",
+          "invite": "Inviter",
+          "follower": "Disciple",
+          "following": "Suivant",
+          "likes": "Aime",
+          "group": "Groupe",
+          "create": "Créer",
+          "invites": "Invite",
+          "sent": "Envoyé",
+          "accepted": "Accepté",
+          "contacts": "Contacts",
+          "delete": "Effacer",
+          "cancel": "Annuler",
+          "groupInfo": "Informations sur le groupe",
+          "save": "sauvegarder",
+          "groups": "Groupes",
+          "avatarName": "Pseudonyme",
+          "createGroup": "Créer un groupe",
+          "enterGroupName": "Entrez le nom du groupe",
+          "enterGroupDescription": "Entrez la description du groupe",
+          "enterDescription": "Entrez la description",
+          "enterUserName": "Entrez le nom d'utilisateur",
+          "EnterAvatarName": "Entrez le nom de l'avatar",
+          "welcomeMessage": "Bienvenue à la conversation!",
+          "tapContact": "Appuyez sur Contact pour démarrer la conversation.",
+          "friend": "Ami",
+          "friends": "copains",
+          "postPreview": "Post Preview",
+          "follow": "Suivre",
+          "howCanI": "Comment puis-je vous aider? S'il vous plaît n'hésitez pas à dire quoi que ce soit à propos de votre préoccupation.",
+          "welcome": "Bienvenue!",
+          "skyrusLiveChat": "Skyrus Live Chat"
         }
     }
 }

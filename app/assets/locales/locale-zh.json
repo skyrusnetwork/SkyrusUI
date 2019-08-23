@@ -209,11 +209,11 @@
         "total_value": "市值",
         "trade": "交易",
         "transactions": {
-            "fee": "Fee",
+            "fee": "费用",
             "id": "ID",
-            "info": "Info",
-            "time": "Time",
-            "type": "Type"
+            "info": "信息",
+            "time": "时间",
+            "type": "类型"
         },
         "transfer_actions": "转账操作",
         "unfollow": "取消关注",
@@ -461,13 +461,13 @@
         }
     },
     "dashboard": {
-        "featured_markets": "Featured Markets",
-        "starred_markets": "Starred Markets",
-        "table_empty": "No market matched",
-        "top_markets": "Top Markets"
+        "featured_markets": "特色市场",
+        "starred_markets": "加星标的市场",
+        "table_empty": "没有市场匹配",
+        "top_markets": "热门市场"
     },
     "exchange": {
-        "add_quote": "Add",
+        "add_quote": "加",
         "asks": "卖单",
         "atr": "平均真实波幅(ATR)",
         "balance": "我的余额",
@@ -498,7 +498,7 @@
         "ema": "指数移动平均线(EMA)",
         "featured": "热门市场",
         "feed_price": "Feed Price",
-        "filter": "Filter...",
+        "filter": "过滤...",
         "flip": "Flip",
         "group_order_limit": "分组",
         "hide": "隐藏",
@@ -510,11 +510,13 @@
         "invalid_price": "价格错误",
         "invert": "反转交易对",
         "latest": "最新成交价",
+        "limit_order": "限价订单",
         "lowest_ask": "最低卖价",
         "maintenance": "维持保证金价",
         "market": "交易对",
         "market_frozen": "%(asset)s 资产发行人已禁用该资产的市场交易",
         "market_name": "市场列表",
+        "market_order": "市场秩序",
         "market_picker": {
             "filter_by_issuer": "Filter by issuer",
             "find_by_asset": "Find by asset",
@@ -541,7 +543,7 @@
         "no_bids": "No bids",
         "no_data": "暂无数据",
         "no_orders": "No orders",
-        "order_book": "Order Book",
+        "order_book": "订购书",
         "order_depth": "市场深度",
         "order_grouping": "Order Grouping %(orderlimit)s%",
         "others": "其他",
@@ -587,8 +589,8 @@
                 "chart_zoom": "Allow Zoom",
                 "hide_function_buttons": "Hide function buttons",
                 "market_location": "Market location",
-                "market_trades": "Market Trades",
-                "my_trades": "My Trades",
+                "market_trades": "市场交易",
+                "my_trades": "我的交易",
                 "open_orders": "Open Orders",
                 "order_book_grouping": "Order Book Grouping",
                 "order_style": "Style",
@@ -633,8 +635,8 @@
         "show_all_trades": "Show all %(rowcount)s trades",
         "show_asks": "显示所有卖单",
         "show_bids": "显示所有买单",
-        "show_only_liquid": "Show liquid markets only",
-        "show_only_star_formatter": "Show {star_icon} only",
+        "show_only_liquid": "仅显示流动性市场",
+        "show_only_star_formatter": "仅显示{star_icon}",
         "sma": "算数移动平均线(SMA)",
         "spread": "买卖价差",
         "squeeze": "强制平仓价",
@@ -889,7 +891,8 @@
             "rudex": "",
             "trade": "<br/><br/>资产 %(asset)s 由真实资产 %(backed)s 1:1 储备背书。可以通过 Blocktrades 提供的网关服务进行充值提现。",
             "win": "",
-            "xbts": ""
+            "xbts": "",
+            "skyrus": "SKX"
         },
         "balance": "余额",
         "balance_asset": "当前 %(asset)s 余额",
@@ -1057,7 +1060,11 @@
         "unlock_short": "登录",
         "unlocked_tip": "钱包已解锁，点击锁定。",
         "update_asset": "更新资产",
-        "withdraw_legacy": "or Legacy Withdraw"
+        "withdraw_legacy": "or Legacy Withdraw",
+        "community": "社区",
+        "investment": "投资",
+        "screensaver": "屏幕保护",
+        "chainFinancing": "连锁融资"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -1091,7 +1098,7 @@
         },
         "dashboard": "Dashboard",
         "deposit": {
-            "deposit": "Deposit",
+            "deposit": "存款",
             "deposit_withdraw": "Deposit/Withdraw"
         },
         "disconnected": "API Node is disconnected",
@@ -1110,7 +1117,7 @@
             "sort_accounts": "Sort by favorites",
             "symbol": "Add/remove symbol from favorites"
         },
-        "filter": "Filter",
+        "filter": "过滤",
         "folder": "Accounts",
         "hamburger": "Open menu",
         "hamburger_x": "Close menu",
@@ -1119,8 +1126,8 @@
         "key": "Key",
         "list": "Whitelist",
         "locked": {
-            "action": "Click to unlock your account to perform this action",
-            "common": "Click to unlock your account",
+            "action": "单击以解锁您的帐户以执行此操作",
+            "common": "点击即可解锁您的帐户",
             "enable_auto_scroll": "Enable auto scroll"
         },
         "manage_accounts": "Manage Accounts",
@@ -1158,7 +1165,7 @@
         },
         "transfer": "Send",
         "unlocked": {
-            "common": "Click to lock your account",
+            "common": "点击锁定您的帐户",
             "disable_auto_scroll": "Disable auto scroll"
         },
         "user": {
@@ -1167,7 +1174,7 @@
             "following": "You are following this user"
         },
         "warning": "Permissions",
-        "withdraw": "Withdraw",
+        "withdraw": "退出",
         "zoom": "Search"
     },
     "incognito": {
@@ -1195,7 +1202,24 @@
         "selectDifferent": "Select different file",
         "supportWarning": "Warning! You browser doesn't support some some file operations required to restore backup, we recommend you to use Chrome or Firefox browsers to restore your backup.",
         "title": "Select Login Type",
-        "withoutBinFile": "I don't have .bin-file"
+        "withoutBinFile": "I don't have .bin-file",
+        "pdfWhitepaper": "PDF白皮书",
+        "buyIco": "买ICO",
+        "whitepaper": "白皮书",
+        "fillThePower": "感受混合交换的力量",
+        "theFastest": "最快的分散和最安全的集中交流",
+        "joinUs": "加入我们，体验差异化",
+        "paperMoney": "纸币",
+        "termsOfUse": "使用条款",
+        "privacyPolicy": "隐私政策",
+        "cookiePolicy": "Cookie政策",
+        "referralDescription": "要获得每位朋友5美元，请在AirDrop广告系列中完成（1）+（2）+（3）之后，让您的朋友填写他们的用户名，电报，推特网址，国家/地址和用户名。 记录所有IP地址。",
+        "myUsername": "我在新帐户中的用户名",
+        "myTelegram": "我的电报",
+        "myTwitter": "我的推特网址",
+        "CountryResidence": "居住国家",
+        "myReferralUsername": "我的推荐人的用户名",
+        "submit": "提交"
     },
     "markets": {
         "base": "基准资产",
@@ -2115,5 +2139,45 @@
             "finalNumber": "预计到账：%(final_number)s",
             "winAmount": "最低提现数量:%(min_amount)s %(asset)s"
         }
+    },
+    "community": {
+      "chatPlaceholder": "在此输入消息",
+      "profile": "轮廓",
+      "message": "信息",
+      "post": "岗位",
+      "notification": "通知",
+      "name": "名称",
+      "contact": "联系",
+      "invite": "邀请",
+      "follower": "信徒",
+      "following": "以下",
+      "likes": "喜欢",
+      "group": "组",
+      "create": "创建",
+      "invites": "邀请",
+      "sent": "发送",
+      "accepted": "公认",
+      "contacts": "往来",
+      "delete": "删除",
+      "cancel": "取消",
+      "groupInfo": "集团信息",
+      "save": "保存",
+      "groups": "组",
+      "avatarName": "头像名称",
+      "createGroup": "创建组",
+      "enterGroupName": "输入组名称",
+      "enterGroupDescription": "输入组说明",
+      "enterDescription": "输入说明",
+      "enterUserName": "输入用户名",
+      "EnterAvatarName": "输入头像名称",
+      "welcomeMessage": "欢迎来电洽谈",
+      "tapContact": "点按“联系人”开始对话。",
+      "friend": "朋友",
+      "friends": "友",
+      "postPreview": "发布预览",
+      "follow": "跟随",
+      "howCanI": "我怎么帮你？请随时告诉您关注的任何问题。",
+      "welcome": "欢迎！",
+      "skyrusLiveChat": "Skyrus在线聊天"
     }
 }

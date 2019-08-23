@@ -70,6 +70,10 @@
   height: 50px !important;
 }
 
+.post-to {
+  border-radius: 6px;
+}
+
 .post-to .fa-angle-up::before {
   font-weight: bold;
   color: #dfdfdf;
@@ -105,4 +109,28 @@
   display: inline-block;
   margin: 5px;
   cursor: pointer;
+}
+
+.three-dot {
+  cursor: pointer;
+  display: inline-block;
+  width: 200px;
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+}
+
+.iframe {
+  width: 800px !important;
+  height: 500px !important;
+}
+
+.ant-select-selection {
+  background-color: transparent !important;
+  border-radius: 5px !important;
+  border-color: #988989 !important;
+}
+
+.ant-select-arrow {
+  color: white !important;
 }

@@ -21,6 +21,7 @@ import titleUtils from "common/titleUtils";
 import {BodyClassName, Notification} from "bitshares-ui-style-guide";
 import {DEFAULT_NOTIFICATION_DURATION} from "services/Notification";
 import Loadable from "react-loadable";
+import counterpart from "counterpart";
 
 import {Route, Switch} from "react-router-dom";
 import Video from "./components/Video"
@@ -195,21 +196,23 @@ class App extends React.Component {
       if(this.state.currentAccount == null || this.state.currentAccount == undefined) {
         return;
       }
-      const messagesRef = database.ref('support_chats/' + this.state.currentAccount + '/' + 'supports')
-        .orderByKey()
-        .limitToLast(100);
-      let keys = [];
-      messagesRef.on('child_added', snapshot => {
-        if(keys.indexOf(snapshot.key) === -1) {
-          keys.push(snapshot.key);
-          const message = { text: snapshot.val(), id: snapshot.key };
-          if(message.text.id === this.state.currentAccount) {
-            // addUserMessage(message.text.content);
-          } else {
-            addResponseMessage(message.text.content);
-          }
-        }
-      });
+      database.ref('support_chats/' + this.state.currentAccount + '/' + 'supports').set(null).then(() => {
+        database.ref('support_chats/' + 'supports' + '/' + this.state.currentAccount).set(null).then(() => {
+          const messagesRef = database.ref('support_chats/' + this.state.currentAccount + '/' + 'supports');
+          let keys = [];
+          messagesRef.on('child_added', snapshot => {
+            if(keys.indexOf(snapshot.key) === -1) {
+              keys.push(snapshot.key);
+              const message = { text: snapshot.val(), id: snapshot.key };
+              if(message.text.id === this.state.currentAccount) {
+                // addUserMessage(message.text.content);
+              } else {
+                addResponseMessage(message.text.content);
+              }
+            }
+          });
+        }).catch(() => {});
+      }).catch(() => {});
     }
 
     setCurrentAccount(currentAccount, user) {
@@ -407,7 +410,7 @@ class App extends React.Component {
             }.bind(this)
         );
         updateGatewayBackers();
-        addResponseMessage("How can I help you? Please feel free to tell anything about your concern.");
+        addResponseMessage(counterpart.translate("community.howCanI"));
     }
 
     handleNewUserMessage(newMessage) {
@@ -598,6 +601,7 @@ class App extends React.Component {
                         </div>
                     </div>
                     <Footer
+                        selectLeftPanelLayout={this.selectLeftPanelLayout}
                         hideTopAndBottomBar={this.state.hideTopAndBottomBar}
                         synced={this.state.synced}
                         history={this.props.history}
@@ -668,7 +672,7 @@ class App extends React.Component {
                         />
                     </div>
                 </BodyClassName>
-                {this.state.currentAccount !== null && this.state.currentAccount !== undefined && (
+                {this.state.currentAccount !== null && this.state.currentAccount !== undefined && this.state.hideTopAndBottomBar === false && (
                   <Rnd
                     style={{right: 20, bottom: 10}}
                     default={{
@@ -680,8 +684,8 @@ class App extends React.Component {
                     <Widget
                       handleNewUserMessage={this.handleNewUserMessage}
                       profileAvatar={defaultAvatar}
-                      title="Skyrus Live Chat"
-                      subtitle="Welcome!"
+                      title={counterpart.translate("community.skyrusLiveChat")}
+                      subtitle={counterpart.translate("community.welcome")}
                       titleAvatar={defaultAvatar}
                     />
                   </Rnd>

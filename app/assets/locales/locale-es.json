@@ -38,7 +38,7 @@
         "filter_orders": "Filter",
         "follow": "Agregar contacto",
         "hidden_accounts_row": "Hidden Accounts",
-        "hide_hidden": "Active",
+        "hide_hidden": "Activa",
         "hide_ignored": "Ocultar cuentas ocultas",
         "history": "Historial",
         "history_error": "Failed to download the account history, please try again",
@@ -179,7 +179,7 @@
         "see_open": "Ver pedidos abiertos",
         "select_placeholder": "Seleccionar Cuenta...",
         "settle": "Resolver",
-        "show_hidden": "Hidden",
+        "show_hidden": "Oculta",
         "show_ignored": "Mostrar cuentas ocultas",
         "show_visual": "Visual",
         "signedmessages": {
@@ -209,11 +209,11 @@
         "total_value": "Total value",
         "trade": "Comercio",
         "transactions": {
-            "fee": "Fee",
+            "fee": "Cuota",
             "id": "ID",
-            "info": "Info",
-            "time": "Time",
-            "type": "Type"
+            "info": "Informacion",
+            "time": "Hora",
+            "type": "Tipo"
         },
         "transfer_actions": "Transfiere acciones",
         "unfollow": "Retirar",
@@ -461,13 +461,13 @@
         }
     },
     "dashboard": {
-        "featured_markets": "Featured Markets",
-        "starred_markets": "Starred Markets",
-        "table_empty": "No market matched",
-        "top_markets": "Top Markets"
+        "featured_markets": "Mercados destacados",
+        "starred_markets": "Mercados Estrellados",
+        "table_empty": "No hay mercado igualado",
+        "top_markets": "Los mejores mercados"
     },
     "exchange": {
-        "add_quote": "Add",
+        "add_quote": "Añadir",
         "asks": "Vender ordenes",
         "atr": "Average True Range",
         "balance": "Su balance",
@@ -498,7 +498,7 @@
         "ema": "Exponential Moving Average",
         "featured": "Mercados principales",
         "feed_price": "Feed Price",
-        "filter": "Filter...",
+        "filter": "Filtrar...",
         "flip": "Flip",
         "group_order_limit": "Grupo",
         "hide": "Ocultar",
@@ -510,11 +510,13 @@
         "invalid_price": "Precio inválido",
         "invert": "Invierta el precio",
         "latest": "Ultimo Precio",
+        "limit_order": "Limiga Ordo",
         "lowest_ask": "Pedido más bajo",
         "maintenance": "Maintenance Call Price",
         "market": "Mercado",
         "market_frozen": "El propietario de %(asset)s ha deshabilitado el comercio en este mercado.",
         "market_name": "Mis mercados",
+        "market_order": "Merkata Ordo",
         "market_picker": {
             "filter_by_issuer": "Filter by issuer",
             "find_by_asset": "Find by asset",
@@ -533,7 +535,7 @@
         "my_asks": "Mis domandas",
         "my_bids": "Mis ofertas",
         "my_history": "Mis comercios",
-        "my_orders": "Mis ordenes abiertos",
+        "my_orders": "Mis ordenes abiertas",
         "native": "Native",
         "new": "Nuevo",
         "no_asks": "No asks",
@@ -587,8 +589,8 @@
                 "chart_zoom": "Allow Zoom",
                 "hide_function_buttons": "Hide function buttons",
                 "market_location": "Market location",
-                "market_trades": "Market Trades",
-                "my_trades": "My Trades",
+                "market_trades": "Oficios de mercado",
+                "my_trades": "Mis oficios",
                 "open_orders": "Open Orders",
                 "order_book_grouping": "Order Book Grouping",
                 "order_style": "Style",
@@ -633,8 +635,8 @@
         "show_all_trades": "Show all %(rowcount)s trades",
         "show_asks": "Mostrar todas las domandas",
         "show_bids": "Mostrar todas las ofertas",
-        "show_only_liquid": "Show liquid markets only",
-        "show_only_star_formatter": "Show {star_icon} only",
+        "show_only_liquid": "Mostrar solo mercados líquidos",
+        "show_only_star_formatter": "Mostrar solo {star_icon}",
         "sma": "Simple Moving Average",
         "spread": "Margen (spread)",
         "squeeze": "Precio Margin Call",
@@ -889,7 +891,8 @@
             "rudex": "",
             "trade": "<br/><br/>The %(asset)s el activo està respaldado 1:1 da real %(backed)s y puede ser depositado o retirado utilizando el servicio de puerta de enlace proporcionado por Blocktrades.",
             "win": "",
-            "xbts": ""
+            "xbts": "",
+            "skyrus": "SKX"
         },
         "balance": "Saldo actual",
         "balance_asset": "Balance corriente %(asset)s ",
@@ -1057,7 +1060,11 @@
         "unlock_short": "Inicio de sesión",
         "unlocked_tip": "Billetera desbloqueada. Click para bloquear",
         "update_asset": "Actualizar activo",
-        "withdraw_legacy": "or Legacy Withdraw"
+        "withdraw_legacy": "or Legacy Withdraw",
+        "community": "Comunidad",
+        "investment": "Inversión",
+        "screensaver": "Salvapantallas",
+        "chainFinancing": "Financiamiento en cadena"
     },
     "icons": {
         "adjust": "Adjust margin position",
@@ -1091,7 +1098,7 @@
         },
         "dashboard": "Dashboard",
         "deposit": {
-            "deposit": "Deposit",
+            "deposit": "Depositar",
             "deposit_withdraw": "Deposit/Withdraw"
         },
         "disconnected": "API Node is disconnected",
@@ -1110,7 +1117,7 @@
             "sort_accounts": "Sort by favorites",
             "symbol": "Add/remove symbol from favorites"
         },
-        "filter": "Filter",
+        "filter": "Filtrar",
         "folder": "Accounts",
         "hamburger": "Open menu",
         "hamburger_x": "Close menu",
@@ -1119,8 +1126,8 @@
         "key": "Key",
         "list": "Whitelist",
         "locked": {
-            "action": "Click to unlock your account to perform this action",
-            "common": "Click to unlock your account",
+            "action": "Haga clic para desbloquear su cuenta para realizar esta acción.",
+            "common": "Haz clic para desbloquear tu cuenta",
             "enable_auto_scroll": "Enable auto scroll"
         },
         "manage_accounts": "Manage Accounts",
@@ -1158,7 +1165,7 @@
         },
         "transfer": "Send",
         "unlocked": {
-            "common": "Click to lock your account",
+            "common": "Haga clic para bloquear su cuenta",
             "disable_auto_scroll": "Disable auto scroll"
         },
         "user": {
@@ -1167,7 +1174,7 @@
             "following": "You are following this user"
         },
         "warning": "Permissions",
-        "withdraw": "Withdraw",
+        "withdraw": "Retirar",
         "zoom": "Search"
     },
     "incognito": {
@@ -1195,7 +1202,24 @@
         "selectDifferent": "Select different file",
         "supportWarning": "Warning! You browser doesn't support some some file operations required to restore backup, we recommend you to use Chrome or Firefox browsers to restore your backup.",
         "title": "Select Login Type",
-        "withoutBinFile": "I don't have .bin-file"
+        "withoutBinFile": "I don't have .bin-file",
+        "pdfWhitepaper": "Libro blanco en PDF",
+        "buyIco": "COMPRAR ICO",
+        "whitepaper": "PAPEL BLANCO",
+        "fillThePower": "Siente el poder de un intercambio híbrido",
+        "theFastest": "El más rápido de los intercambios centralizados descentralizados y más seguros",
+        "joinUs": "Únete a nosotros y experimenta la diferencia",
+        "paperMoney": "Papel moneda",
+        "termsOfUse": "Términos de Uso",
+        "privacyPolicy": "Política de privacidad",
+        "cookiePolicy": "Política de cookies",
+        "referralDescription": "Para ganar $ 5 por amigo, pídales a sus amigos que completen su nombre de usuario, su telegrama, su URL de Twitter, su país y su nombre de usuario a continuación después de completar (1) + (2) + (3) en la Campaña AirDrop. Todas las direcciones IP están registradas.",
+        "myUsername": "Mi nombre de usuario en nueva cuenta",
+        "myTelegram": "Mi telegrama",
+        "myTwitter": "Mi URL de Twitter",
+        "CountryResidence": "País de residencia",
+        "myReferralUsername": "Nombre de usuario de mi referido",
+        "submit": "Enviar"
     },
     "markets": {
         "base": "Activo base",
@@ -2115,5 +2139,45 @@
             "finalNumber": "Actual amount ：%(final_number)s",
             "winAmount": "Minimum amount: %(min_amount)s %(asset)s"
         }
+    },
+    "community": {
+      "chatPlaceholder": "Escribe un mensaje aquí",
+      "profile": "Perfil",
+      "message": "Mensaje",
+      "post": "Enviar",
+      "notification": "Notificación",
+      "name": "Nombre",
+      "contact": "Contacto",
+      "invite": "Invitación",
+      "follower": "Seguidor",
+      "following": "Siguiendo",
+      "likes": "Gustos",
+      "group": "Grupo",
+      "create": "Crear",
+      "invites": "Invita",
+      "sent": "Expedido",
+      "accepted": "Aceptado",
+      "contacts": "Contactos",
+      "delete": "Borrar",
+      "cancel": "Cancelar",
+      "groupInfo": "Información del grupo",
+      "save": "Salvar",
+      "groups": "Grupos",
+      "avatarName": "Nombre del avatar",
+      "createGroup": "Crear grupo",
+      "enterGroupName": "Ingrese el nombre del grupo",
+      "enterGroupDescription": "Ingrese la descripción del grupo",
+      "enterDescription": "Ingrese la descripción",
+      "enterUserName": "Ingrese nombre de usuario",
+      "EnterAvatarName": "Ingrese el nombre del avatar",
+      "welcomeMessage": "¡Bienvenido a la conversación!",
+      "tapContact": "Toque Contacto para iniciar la conversación.",
+      "friend": "Amigo",
+      "friends": "Amigos",
+      "postPreview": "Vista previa de publicación",
+      "follow": "Seguir",
+      "howCanI": "¿Como puedo ayudarte? Por favor, siéntase libre de decir cualquier cosa sobre su preocupación.",
+      "welcome": "¡Bienvenido!",
+      "skyrusLiveChat": "Skyrus Live Chat"
     }
 }

@@ -1,7 +1,7 @@
 import {getFaucet} from "../branding";
 
 export const skyrusAPIs = {
-    BASE: "https://gateway.skyrus.io__/api/v1",
+    BASE: "https://gateway.skyrus.io/api/v1",
     //BASE: "http://144.202.90.171:5000/api/v1",
     COINS_LIST: "/coins",
     ACTIVE_WALLETS: "/active-wallets",
@@ -136,18 +136,25 @@ export const nodeRegions = [
 export const settingsAPIs = {
     // If you want a location to be translated, add the translation to settings in locale-xx.js
     // and use an object {translate: key} in WS_NODE_LIST
-    DEFAULT_WS_NODE: "ws://testnet.skyrus.io:9901",
+    DEFAULT_WS_NODE: "wss://seed1.skyrus.io:11012",
     //DEFAULT_WS_NODE: "wss://fake.automatic-selection.com",
     WS_NODE_LIST: [
         {
-          url: "ws://testnet.skyrus.io:9901",
+          url: "ws://seed1.skyrus.io:11011",
           region: "Southeastern Asia",
           country: "Singapore",
           operator: "Witness: openledger-dc",
           contact: "telegram:mtopenledger"
         },
         {
-          url: "wss://testnet.skyrus.io:9902",
+          url: "wss://seed1.skyrus.io:11012",
+          region: "Southeastern Asia",
+          country: "Singapore",
+          operator: "Witness: openledger-dc",
+          contact: "telegram:mtopenledger"
+        },
+        {
+          url: "wss://seed2.skyrus.io:11012",
           region: "Southeastern Asia",
           country: "Singapore",
           operator: "Witness: openledger-dc",

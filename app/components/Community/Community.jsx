@@ -6,6 +6,7 @@ import {Tabs, Tab} from "../Utility/Tabs";
 import Profile from "./Profile";
 import Message from "./Message";
 import Notifications from "./Notifications";
+import counterpart from "counterpart";
 import Post from "./Post";
 
 const database = fire.database();
@@ -124,18 +125,18 @@ class Community extends React.Component {
             tabsClass="account-overview no-padding bordered-header content-block"
         >
             <Tab
-                title="Profile"
+                title={counterpart.translate("community.profile")}
             >
               <Profile currentAccount={this.currentAccount} user={this.state.user}/>
             </Tab>
 
             <Tab
-                title="Message"
+                title={counterpart.translate("community.message")}
             >
               <Message currentAccount={this.currentAccount} user={this.state.user}/>
             </Tab>
             <Tab
-                title="Post"
+                title={counterpart.translate("community.post")}
             >
               <Post currentAccount={this.currentAccount} user={this.state.user}/>
             </Tab>
@@ -164,7 +165,7 @@ class Community extends React.Component {
               </div>
             </Tab> */}
             <Tab
-                title="Notification"
+                title={counterpart.translate("community.notification")}
                 unreadCount={this.state.unreadCount}
             >
               <Notifications notifications={this.state.notifications} currentAccount={this.currentAccount} user={this.state.user}/>

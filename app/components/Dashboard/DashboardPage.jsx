@@ -5,6 +5,7 @@ import LoadingIndicator from "../LoadingIndicator";
 import LoginSelector from "../LoginSelector";
 import AccountStore from "stores/AccountStore";
 import SettingsStore from "stores/SettingsStore";
+import counterpart from "counterpart";
 
 import {Tabs, Tab} from "../Utility/Tabs";
 import {StarredMarkets, FeaturedMarkets} from "./Markets";
@@ -83,7 +84,7 @@ class DashboardPage extends React.Component {
         if (!accountCount || window.location.href.indexOf("/land") > -1) {
             return <LoginSelector />;
         }
-        
+
 
         return (
             <div className="grid-block page-layout">
@@ -93,7 +94,7 @@ class DashboardPage extends React.Component {
                         ref="appTables"
                     >
                         <div className="small-12" style={{padding:20}}>
-                            <h3 style={{margin:0}}>{"SKX Market"}</h3>
+                            <h3 style={{margin:0}}>SKX {counterpart.translate("account.bts_market")}</h3>
                             <div className="grid-block">
                                 <div className="small-12 medium-6 large-6">
                                     <MarketsBox
@@ -108,7 +109,7 @@ class DashboardPage extends React.Component {
                                     />
                                 </div>
                             </div>
-                            <h3 style={{margin:0}}>{"Top Markets"}</h3>
+                            <h3 style={{margin:0}}>{counterpart.translate("dashboard.top_markets")}</h3>
                             <div className="grid-block">
                                 <div className="small-12 medium-6 large-3">
                                     <MarketsBox

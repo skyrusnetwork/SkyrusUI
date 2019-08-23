@@ -60,7 +60,6 @@ class AccountSelector extends React.Component {
 
         if (typeof account === "undefined")
             account = ChainStore.getAccount(accountName);
-
         if (this.props.onAccountChanged && account)
             this.props.onAccountChanged(account);
 

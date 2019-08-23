@@ -2,6 +2,7 @@ import React from "react";
 import Ps from "perfect-scrollbar";
 import colors from "assets/colors";
 import AccountStore from "stores/AccountStore";
+import counterpart from "counterpart";
 import fire from "../firebase";
 const database = fire.database();
 
@@ -90,7 +91,7 @@ class ChatBox extends React.Component {
 
   onAddMessage(event) {
     event.preventDefault();
-    if(this.state.user == null) {
+    if(this.state.user == null || !this.input.value) {
       return;
     }
     let name, image, id;
@@ -144,7 +145,7 @@ class ChatBox extends React.Component {
 
     return (
       <div style={{width: "100%", height: '100%', display: 'flex', flexDirection: 'column'}}>
-        <div style={{width: "100%", flex: 1}} ref="chatScroll">
+        <div style={{width: "100%", position: 'relative'}} ref="chatScroll">
           <div className="MessagesList">
             {this.state.messages.map(message =>
               <div style={{marginBottom:"20px"}} key={message.id}>
@@ -154,7 +155,7 @@ class ChatBox extends React.Component {
                     style={{borderRadius:"50%", border: "none", width: "30px", height: "30px", backgroundColor: "#777777", marginRight:"3px"}}
                   />
                   <span style={{color: "#777777",  marginRight:"20px"}}>
-                      {message.text.user}
+                      {message.text.user !== null && message.text.user !== undefined && message.text.user !== 'undefined' ? message.text.user : message.text.id}
                   </span>
                   <span style={{color: "#444444", fontSize:"11px"}}>
                       {this.timeConverter(message.text.date)}
@@ -170,7 +171,7 @@ class ChatBox extends React.Component {
 
         <form style={{height: 50}} onSubmit={this.onAddMessage}>
           <input
-            type="text" ref={node => this.input = node} placeholder="Type a message here"
+            type="text" ref={node => this.input = node} placeholder={counterpart.translate("community.chatPlaceholder")}
             style={{border:"1px solid #555555"}}
             disabled={
                 !this.props.currentAccount || this.props.currentAccount === "1.2.3"

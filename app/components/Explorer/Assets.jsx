@@ -25,7 +25,7 @@ class Assets extends React.Component {
 
         let chainID = Apis.instance().chain_id;
         if (chainID) chainID = chainID.substr(0, 8);
-        else chainID = "a04fa179";
+        else chainID = "2843a40a";
 
         this.state = {
             chainID,
@@ -35,7 +35,7 @@ class Assets extends React.Component {
             totalAssets:
                 typeof accountStorage.get(`totalAssets_${chainID}`) != "object"
                     ? accountStorage.get(`totalAssets_${chainID}`)
-                    : chainID && chainID === "a04fa179"
+                    : chainID && chainID === "2843a40a"
                         ? 3000
                         : 50, // mainnet has 3000+ assets, other chains may not have that many
             assetsFetched: 0,

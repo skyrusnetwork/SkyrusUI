@@ -424,6 +424,7 @@
     }
     .page-layout {
         background-color: lighten($account-header, 4%);
+        // background-color: transparent;
 
         .column-header {
             > ul {
@@ -1444,11 +1445,11 @@
     .orderbook-latest-price {
         > div {
             $orderbook-center-horizontal-margin: 5px;
-            margin-top: $orderbook-center-horizontal-margin;
-            margin-bottom: $orderbook-center-horizontal-margin;
+            //margin-top: $orderbook-center-horizontal-margin;
+            //margin-bottom: $orderbook-center-horizontal-margin;
             background-color: $panel-bg-color !important;
-            border-bottom: 1px solid grey !important;
-            border-top: 1px solid grey !important;
+            //border-bottom: 1px solid grey !important;
+            //border-top: 1px solid grey !important;
             padding: 7px 0 !important;
         }
     }
@@ -1459,6 +1460,7 @@
     }
     .left-order-book {
         background-color: $bg-color;
+        // background-color: transparent !important;
         .orderbook-center-title {
             color: $inactive-text-color;
         }
