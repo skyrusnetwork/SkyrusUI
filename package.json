@@ -254,7 +254,7 @@
         "less-plugin-precompile-import": "git+https://github.com/gibbsfromncis/less-plugin-precompile-import.git#166550452515c03c0d497cae97bf58ba15ca1f84",
         "markdown-loader": "^2.0.2",
         "mini-css-extract-plugin": "^0.4.0",
-        "mocha": "^5.1.1",
+        "mocha": "^10.2.0",
         "node-libs-browser": "^1.0.0",
         "node-sass": "^4.11.0",
         "null-loader": "^0.1.1",
